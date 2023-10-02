@@ -76,10 +76,6 @@ public class Mesa {
     @Override
     public String toString() {
         return  idMesa + "," + nombreCliente + "," + dni + "," + fecha + "," + hora + ", " + estado ;
-    }
-
-    
-    
-    
+    }  
     
 }

@@ -47,6 +47,5 @@ public class Mesero {
     public String toString() {
         return id_mesero + ", " + nombre + ", " + id_pedido ;
     }
-    
-    
+     
 }

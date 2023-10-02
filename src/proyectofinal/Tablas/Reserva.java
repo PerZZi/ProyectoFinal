@@ -78,10 +78,5 @@ public class Reserva {
     public String toString() {
         return   idReserva + ", " + nombre + ", " + dni + ", " + fechaYhora + ", " + idmesa + ", " + estado ;
     }
-   
-   
-   
-    
-    
     
 }
