@@ -7,6 +7,8 @@ package proyectofinal;
 
 import java.sql.Connection;
 import proyectofinal.BaseDatos.Conexion;
+import proyectofinal.BaseDatos.ProductoData;
+import proyectofinal.Tablas.Producto;
 
 /**
  *
@@ -18,7 +20,20 @@ public class ProyectoFinal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        Connection con = Conexion.getConnection();
+        Producto pro1 = new Producto();
+        pro1.setNombre("tallarines");
+        pro1.setStock(20);
+        pro1.setPrecio(500.0);
+        ProductoData proData = new ProductoData();
+        proData.agregarProducto(pro1);
+        
+        Producto pro2 = new Producto();
+        pro2.setNombre("tallarines");
+        pro2.setStock(20);
+        pro2.setPrecio(500.0);
+        ProductoData pro2Data = new ProductoData();
+        pro2Data.agregarProducto(pro2);
     }
-    Connection con= Conexion.getConnection();
 }
