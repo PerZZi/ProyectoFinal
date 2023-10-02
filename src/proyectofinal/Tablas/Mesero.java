@@ -5,10 +5,7 @@
  */
 package proyectofinal.Tablas;
 
-/**
- *
- * @author seba
- */
+
 public class Mesero {
     private int id_mesero;
     private String nombre;
