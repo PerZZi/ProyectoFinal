@@ -11,12 +11,12 @@ public class Mesa {
     private int dni;
     private LocalDate fecha;
     private LocalDate hora;
-    private int estado;
+    private boolean estado;
 
     public Mesa() {
     }
 
-    public Mesa(int idMesa, String nombreCliente, int dni, LocalDate fecha, LocalDate hora, int estado) {
+    public Mesa(int idMesa, String nombreCliente, int dni, LocalDate fecha, LocalDate hora, boolean estado) {
         this.idMesa = idMesa;
         this.nombreCliente = nombreCliente;
         this.dni = dni;
@@ -65,11 +65,11 @@ public class Mesa {
         this.hora = hora;
     }
 
-    public int getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
