@@ -29,11 +29,16 @@ public class ProyectoFinal {
 //        ProductoData proData = new ProductoData();
 //        proData.agregarProducto(pro1);
 //        
-//        Producto pro2 = new Producto();
-//        pro2.setNombre("tallarines");
-//        pro2.setStock(20);
-//        pro2.setPrecio(500.0);
-//        ProductoData pro2Data = new ProductoData();
-//        pro2Data.agregarProducto(pro2);
+        Producto pro2 = new Producto();
+        pro2.setNombre("tallarines");
+        pro2.setStock(20);
+        pro2.setPrecio(500.0);
+        ProductoData pro2Data = new ProductoData();
+        //pro2Data.agregarProducto(pro2);
+        
+        Producto productoEncontrado= pro2Data.buscarProducto(5);
+        System.out.println("Nombre " + productoEncontrado.getNombre());
+        System.out.println("Stock " + productoEncontrado.getStock());
+        System.out.println("Precio " + productoEncontrado.getPrecio());
     }
 }
