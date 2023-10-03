@@ -35,8 +35,5 @@ public class ProyectoFinal {
         pro2.setPrecio(500.0);
         ProductoData pro2Data = new ProductoData();
         pro2Data.agregarProducto(pro2);
-        
-        
-        
     }
 }
