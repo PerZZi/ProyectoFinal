@@ -36,9 +36,9 @@ public class ProyectoFinal {
         ProductoData pro2Data = new ProductoData();
         //pro2Data.agregarProducto(pro2);
         
-        Producto productoEncontrado= pro2Data.buscarProducto(5);
-        System.out.println("Nombre " + productoEncontrado.getNombre());
-        System.out.println("Stock " + productoEncontrado.getStock());
-        System.out.println("Precio " + productoEncontrado.getPrecio());
+        //Producto productoEncontrado= pro2Data.buscarProductoPorNombre("tallarines");
+        //System.out.println("Nombre " + productoEncontrado.getNombre());
+        //System.out.println("Stock " + productoEncontrado.getStock());
+        //System.out.println("Precio " + productoEncontrado.getPrecio());
     }
 }
