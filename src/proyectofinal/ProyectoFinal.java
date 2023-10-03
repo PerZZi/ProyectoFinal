@@ -7,7 +7,9 @@ package proyectofinal;
 
 import java.sql.Connection;
 import proyectofinal.BaseDatos.Conexion;
+import proyectofinal.BaseDatos.MeseroData;
 import proyectofinal.BaseDatos.ProductoData;
+import proyectofinal.Tablas.Mesero;
 import proyectofinal.Tablas.Producto;
 
 /**
@@ -40,5 +42,9 @@ public class ProyectoFinal {
         //System.out.println("Nombre " + productoEncontrado.getNombre());
         //System.out.println("Stock " + productoEncontrado.getStock());
         //System.out.println("Precio " + productoEncontrado.getPrecio());
+        
+        Mesero mese1=new Mesero("Joaquin",5);
+        MeseroData meseData=new MeseroData();
+        meseData.agregarMesero(mese1);
     }
 }
