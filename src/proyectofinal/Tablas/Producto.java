@@ -15,15 +15,17 @@ public class Producto {
     private String nombre;
     private int stock;
     private double precio;
+    private boolean estado;
 
     public Producto() {
     }
 
-    public Producto(int idCodigo, String nombre, int stock, double precio) {
+    public Producto(int idCodigo, String nombre, int stock, double precio, boolean estado) {
         this.idCodigo = idCodigo;
         this.nombre = nombre;
         this.stock = stock;
         this.precio = precio;
+        this.estado = estado;
     }
 
     public int getIdCodigo() {
@@ -57,10 +59,18 @@ public class Producto {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+    
+    public boolean getEstado(){
+        return estado;
+    }
+    
+     public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 
     @Override
     public String toString() {
-        return  idCodigo + ", " + nombre + ", =" + stock + ", " + precio ;
+        return  idCodigo + ", " + nombre + ", =" + stock + ", " + precio + ", " + estado;
     } 
     
 }

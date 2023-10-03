@@ -29,12 +29,13 @@ public class ProductoData {
     
     public void agregarProducto(Producto producto){
         
-        String sql= "INSERT INTO producto (nombre, stock, precio) VALUES (?, ?, ?)";
+        String sql= "INSERT INTO producto (nombre, stock, precio, estado) VALUES (?, ?, ?, ?)";
         try{
             PreparedStatement ps= con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, producto.getNombre());
             ps.setInt(2, producto.getStock());
             ps.setDouble(3, producto.getPrecio());
+            ps.setBoolean(4, true);
             ps.executeUpdate();
             ResultSet rs= ps.getGeneratedKeys();
             if(rs.next()){
