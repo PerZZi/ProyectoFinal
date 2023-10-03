@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -157,4 +159,32 @@ public class ProductoData {
         
         return producto;
     }
+     
+     public List<Producto> ListarProductos(){
+         
+         String sql = "SELECT id_Codigo, nombre, stock, precio FROM producto WHERE estado= 1";
+         
+         ArrayList<Producto> productos=new ArrayList();
+         try{
+             PreparedStatement ps=con.prepareCall(sql);
+             
+             ResultSet rs = ps.executeQuery();
+             
+             while(rs.next()){
+                 Producto producto=new Producto();
+                 producto.setIdCodigo(rs.getInt("id_Codigo"));
+                 producto.setNombre(rs.getString("nombre"));
+                 producto.setStock(rs.getInt("stock"));
+                 producto.setPrecio(rs.getDouble("precio"));
+                 producto.setEstado(true);
+                 
+                 productos.add(producto);
+             }
+             ps.close();
+             
+         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
+        }
+         return productos;
+     }
 }
