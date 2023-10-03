@@ -10,8 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,8 +21,7 @@ import proyectofinal.Tablas.Producto;
  */
 public class ProductoData {
     
-    private Connection con = null;
-    private Set<Producto> productos=new HashSet<>(); 
+    private Connection con = null; 
 
     public ProductoData() {
         con = Conexion.getConnection();
