@@ -20,34 +20,81 @@ import proyectofinal.Tablas.Producto;
  * @author Usuario
  */
 public class ProductoData {
-    
-    private Connection con = null; 
+
+    private Connection con = null;
 
     public ProductoData() {
         con = Conexion.getConnection();
     }
-    
-    public void agregarProducto(Producto producto){
-        
-        String sql= "INSERT INTO producto (nombre, stock, precio, estado) VALUES (?, ?, ?, ?)";
-        try{
-            PreparedStatement ps= con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+    public void agregarProducto(Producto producto) {
+
+        String sql = "INSERT INTO producto (nombre, stock, precio, estado) VALUES (?, ?, ?, ?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, producto.getNombre());
             ps.setInt(2, producto.getStock());
             ps.setDouble(3, producto.getPrecio());
             ps.setBoolean(4, true);
             ps.executeUpdate();
-            ResultSet rs= ps.getGeneratedKeys();
-            if(rs.next()){
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
                 producto.setIdCodigo(1);
                 JOptionPane.showMessageDialog(null, "Se agrego un producto");
             }
             ps.close();
-            
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ");
         }
     }
+
+    public void modificarProducto(Producto producto) {
+
+        String sql = "UPDATE producto SET nombre= ? ,stock= ? ,precio= ? ,estado= ?" + "WHERE id_Codigo=?";
+
+        try {
+            PreparedStatement ps = ps = con.prepareStatement(sql);
+            ps.setString(1, producto.getNombre());
+            ps.setInt(2, producto.getStock());
+            ps.setDouble(3, producto.getPrecio());
+            ps.setBoolean(4, producto.getEstado());
+            ps.setInt(5, producto.getIdCodigo());
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+
+                JOptionPane.showMessageDialog(null, "Producto Modificado ");
+            }
+
+        } catch (SQLException ex) {
+
+            JOptionPane.showMessageDialog(null, "Error al tratar de acceder a la tabla alumno");
+
+        }
+    }
     
+    public void eliminarProducto(int id) {
+        
+        try {
+            String sql = "UPDATE producto SET estado= 0 where id_Codigo = ?";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            int elimino = ps.executeUpdate();
+            
+            if (elimino == 1) {
+                
+                JOptionPane.showMessageDialog(null, "Producto Eliminado");
+                
+            }
+            ps.close();
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
+            
+        }
+    }
 }
