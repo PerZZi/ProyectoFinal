@@ -48,6 +48,43 @@ public class ProductoData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ");
         }
+      
+     
+        
     }
+    
+        public void modificarProducto(Producto producto){
+        
+        String sql ="UPDATE producto SET nombre=?,stock=?,precio=?,estado=?"+"WHERE idCodigo=?"; 
+                
+        try {
+            PreparedStatement ps=ps=con.prepareStatement(sql);
+            ps.setString(1, producto.getNombre());
+            ps.setInt(2, producto.getStock());
+            ps.setDouble(3, producto.getPrecio());
+            ps.setBoolean(4, true);
+            ps.setInt(5, producto.getIdCodigo());
+            
+           int exito=ps.executeUpdate();
+           
+           if(exito==1){
+           
+               JOptionPane.showMessageDialog(null, "Producto Modificado ");
+           }
+            
+       } catch (SQLException ex) {
+            
+            JOptionPane.showMessageDialog(null,"Error al tratar de acceder a la tabla alumno");
+            
+        }
+        
+        
+                
+                
+                
+                }      
+                
+                
+    
     
 }
