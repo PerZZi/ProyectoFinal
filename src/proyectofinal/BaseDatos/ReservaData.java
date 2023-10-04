@@ -9,6 +9,6 @@ package proyectofinal.BaseDatos;
  *
  * @author Usuario
  */
-public class ReservaData {
-    
+public class ReservaData{
+       
 }
