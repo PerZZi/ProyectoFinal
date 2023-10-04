@@ -45,4 +45,31 @@ public class MeseroData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ");
         }
     }
+    
+    public void modificarMesero(Mesero mesero) {
+
+        String sql = "UPDATE mesero SET nombre= ? ,id_pedido= ? ,estado= ?" + "WHERE id_mesero=?";
+
+        try {
+            PreparedStatement ps = ps = con.prepareStatement(sql);
+            ps.setString(1, mesero.getNombre());
+            ps.setInt(2, mesero.getId_pedido());
+            ps.setBoolean(3, mesero.getEstado());
+            
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+
+                JOptionPane.showMessageDialog(null, "Mesero modificado");
+            }
+
+        } catch (SQLException ex) {
+
+            JOptionPane.showMessageDialog(null, "Error al tratar de acceder a la tabla mesero");
+
+        }
+    }
+    
+    
 }
