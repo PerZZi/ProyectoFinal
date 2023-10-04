@@ -1,7 +1,7 @@
 
 package proyectofinal.Tablas;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 public class Mesa {
@@ -9,19 +9,24 @@ public class Mesa {
     private int idMesa;
     private String nombreCliente;
     private int dni;
-    private LocalDate fecha;
-    private LocalDate hora;
+    private LocalDateTime fechaYhora;
     private boolean estado;
 
     public Mesa() {
     }
 
-    public Mesa(int idMesa, String nombreCliente, int dni, LocalDate fecha, LocalDate hora, boolean estado) {
+    public Mesa(String nombreCliente, int dni, LocalDateTime fechaYhora, boolean estado) {
+        this.nombreCliente = nombreCliente;
+        this.dni = dni;
+        this.fechaYhora = fechaYhora;
+        this.estado = estado;
+    }
+
+    public Mesa(int idMesa, String nombreCliente, int dni, LocalDateTime fechaYhora, boolean estado) {
         this.idMesa = idMesa;
         this.nombreCliente = nombreCliente;
         this.dni = dni;
-        this.fecha = fecha;
-        this.hora = hora;
+        this.fechaYhora = fechaYhora;
         this.estado = estado;
     }
 
@@ -49,23 +54,15 @@ public class Mesa {
         this.dni = dni;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
+    public LocalDateTime getFechaYhora() {
+        return fechaYhora;
     }
 
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
+    public void setFechaYhora(LocalDateTime fechaYhora) {
+        this.fechaYhora = fechaYhora;
     }
 
-    public LocalDate getHora() {
-        return hora;
-    }
-
-    public void setHora(LocalDate hora) {
-        this.hora = hora;
-    }
-
-    public boolean getEstado() {
+    public boolean isEstado() {
         return estado;
     }
 
@@ -75,7 +72,7 @@ public class Mesa {
 
     @Override
     public String toString() {
-        return  idMesa + "," + nombreCliente + "," + dni + "," + fecha + "," + hora + ", " + estado ;
-    }  
+        return idMesa + ", " + nombreCliente + ", " + dni + ", " + fechaYhora + ", " + estado;
+    } 
     
 }
