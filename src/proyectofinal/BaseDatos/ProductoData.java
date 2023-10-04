@@ -29,7 +29,7 @@ public class ProductoData {
         con = Conexion.getConnection();
     }
 
-    public void agregarProducto(Producto producto) {
+        public void agregarProducto(Producto producto) {
 
         String sql = "INSERT INTO producto (nombre, stock, precio, estado) VALUES (?, ?, ?, ?)";
         try {

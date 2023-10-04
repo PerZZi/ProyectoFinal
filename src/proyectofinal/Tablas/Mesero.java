@@ -10,14 +10,25 @@ public class Mesero {
     private int id_mesero;
     private String nombre;
     private int id_pedido;
+    private boolean estado;
 
     public Mesero() {
     }
 
-    public Mesero(String nombre, int id_pedido) {
+    public Mesero(String nombre, int id_pedido, boolean estado) {
         this.nombre = nombre;
         this.id_pedido = id_pedido;
+        this.estado = estado;
     }
+
+    public Mesero(int id_mesero, String nombre, int id_pedido, boolean estado) {
+        this.id_mesero = id_mesero;
+        this.nombre = nombre;
+        this.id_pedido = id_pedido;
+        this.estado = estado;
+    }
+    
+    
 
     public int getId_mesero() {
         return id_mesero;
@@ -43,9 +54,18 @@ public class Mesero {
         this.id_pedido = id_pedido;
     }
     
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+    
+    
     @Override
     public String toString() {
-        return id_mesero + ", " + nombre + ", " + id_pedido ;
+        return id_mesero + ", " + nombre + ", " + id_pedido + ", " + estado;
     }
      
 }

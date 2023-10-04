@@ -27,11 +27,12 @@ public class MeseroData {
 
     public void agregarMesero(Mesero mesero) {
 
-        String sql = "INSERT INTO mesero (nombre, id_pedido) VALUES (?, ?)";
+        String sql = "INSERT INTO mesero (nombre, id_pedido, estado) VALUES (?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, mesero.getNombre());
             ps.setInt(2, mesero.getId_pedido());
+            ps.setBoolean(3, true);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
