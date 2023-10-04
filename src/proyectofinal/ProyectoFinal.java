@@ -43,8 +43,9 @@ public class ProyectoFinal {
         //System.out.println("Stock " + productoEncontrado.getStock());
         //System.out.println("Precio " + productoEncontrado.getPrecio());
         
-        Mesero mese1=new Mesero("Joaquin",5, true);
-        MeseroData meseData=new MeseroData();
-        meseData.agregarMesero(mese1);
+        //Mesero mese1=new Mesero("Joaquin",5, true);
+        //MeseroData meseData=new MeseroData();
+        //meseData.agregarMesero(mese1);
+        
     }
 }

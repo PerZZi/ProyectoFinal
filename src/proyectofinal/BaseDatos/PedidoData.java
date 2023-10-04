@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 import proyectofinal.Tablas.Pedido;
 
@@ -18,22 +19,25 @@ import proyectofinal.Tablas.Pedido;
  * @author Usuario
  */
 public class PedidoData {
-    
+
     private Connection con = null;
 
     public PedidoData() {
         con = Conexion.getConnection();
     }
-    
-        public void agregarPedido(Pedido pedido) {
+
+    public void agregarPedido(Pedido pedido) {
 
         String sql = "INSERT INTO pedido (id_mesa, id_producto, id_mesero, fechaYhora, estado) VALUES (?, ?, ?, ?, ?)";
         try {
+            LocalDateTime localDateTime = LocalDateTime.now();
+            java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf(localDateTime);
+     
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, pedido.getIdMesa());
             ps.setInt(2, pedido.getIdProducto());
             ps.setInt(3, pedido.getIdMesero());
-            ps.setDate(4, pedido.getFechaHora());
+            ps.setTimestamp(1, java.sql.Timestamp.valueOf(pedido.getFechaHora()));
             ps.setBoolean(5, true);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
