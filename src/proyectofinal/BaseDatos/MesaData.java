@@ -76,19 +76,21 @@ public class MesaData {
     }
 
     public void modificarMesa(Mesa mesa) {
-        String sql = "UPDATE mesa SET NroMesa= ?, cantidad= ?,estado= ? WHERE id_Mesa= ?";
+        
+        String sql = "UPDATE mesa SET NroMesa= ?, capacidad= ?,estado= ? WHERE id_Mesa= ?";
+        
         try {
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, mesa.getNumeroMesa());
             ps.setInt(2, mesa.getCapacidad());
             ps.setBoolean(3, mesa.isEstado());
-            ps.setInt(5, mesa.getIdMesa());
+            ps.setInt(4, mesa.getIdMesa());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 mesa.setIdMesa(1);
-                JOptionPane.showMessageDialog(null, "Pedido Modificado");
+                JOptionPane.showMessageDialog(null, "Mesa modificado");
             }
             ps.close();
 

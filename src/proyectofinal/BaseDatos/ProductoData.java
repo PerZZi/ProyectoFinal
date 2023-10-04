@@ -56,7 +56,7 @@ public class ProductoData {
         String sql = "UPDATE producto SET nombre= ? ,stock= ? ,precio= ? ,estado= ? WHERE id_Codigo=?";
 
         try {
-            PreparedStatement ps = ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, producto.getNombre());
             ps.setInt(2, producto.getStock());
             ps.setDouble(3, producto.getPrecio());
@@ -64,7 +64,6 @@ public class ProductoData {
             ps.setInt(5, producto.getIdCodigo());
 
             int exito = ps.executeUpdate();
-
             if (exito == 1) {
 
                 JOptionPane.showMessageDialog(null, "Producto Modificado ");
