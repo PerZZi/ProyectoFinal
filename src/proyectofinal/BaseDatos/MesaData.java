@@ -59,31 +59,8 @@ public class MesaData {
             
             JOptionPane.showMessageDialog(null, "Error al intetar agregar Mesa ");
             
-        }
-
-  
-  
-  
-  
-  }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        } 
+  } 
     
     public void cancelarMesa(int id) {
         
