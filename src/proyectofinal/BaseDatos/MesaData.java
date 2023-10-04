@@ -21,46 +21,44 @@ import proyectofinal.Tablas.Mesa;
  * @author Usuario
  */
 public class MesaData {
-    private Connection con = null;
 
+    private Connection con = null;
+    
     public MesaData() {
         con = Conexion.getConnection();
         
     }
     
-    
-  public void agregarMesa(Mesa mesa) {
-  
-    String sql = "INSERT INTO producto (id_mesa,nombreCliente,dni,fechaYhora,estado) VALUES (?, ?, ?, ?,?)";
-
+    public void agregarMesa(Mesa mesa) {
+        
+        String sql = "INSERT INTO producto (id_mesa,nombreCliente,dni,fechaYhora,estado) VALUES (?, ?, ?, ?,?)";
+        
         try {
             
             LocalDateTime localDateTime = LocalDateTime.now();
             java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf(localDateTime);
             
-            
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, mesa.getIdMesa());
             ps.setString(2, mesa.getNombreCliente());
-            ps.setInt(3,mesa.getDni());
+            ps.setInt(3, mesa.getDni());
             ps.setTimestamp(1, java.sql.Timestamp.valueOf(mesa.getFechaYhora()));
             ps.setBoolean(5, mesa.isEstado());
             ps.executeUpdate();
-           ResultSet rs = ps.getGeneratedKeys();
-           
-           if(rs.next()){
-               
-           JOptionPane.showMessageDialog(null," Mesa agregada ");
-           
-           }
-           ps.close();
-           
-        } catch (SQLException ex) {
+            ResultSet rs = ps.getGeneratedKeys();
             
+            if (rs.next()) {
+                mesa.setIdMesa(1);
+                JOptionPane.showMessageDialog(null, " Mesa agregada ");
+                
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {            
             JOptionPane.showMessageDialog(null, "Error al intetar agregar Mesa ");
             
-        } 
-  } 
+        }        
+    }    
     
     public void cancelarMesa(int id) {
         
