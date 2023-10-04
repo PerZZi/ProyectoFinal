@@ -1,32 +1,27 @@
 
 package proyectofinal.Tablas;
 
-import java.time.LocalDateTime;
-
 
 public class Mesa {
     
     private int idMesa;
-    private String nombreCliente;
-    private int dni;
-    private LocalDateTime fechaYhora;
+    private int numeroMesa;
+    private int capacidad;
     private boolean estado;
 
     public Mesa() {
     }
 
-    public Mesa(String nombreCliente, int dni, LocalDateTime fechaYhora, boolean estado) {
-        this.nombreCliente = nombreCliente;
-        this.dni = dni;
-        this.fechaYhora = fechaYhora;
+    public Mesa(int numeroMesa, int capacidad, boolean estado) {
+        this.numeroMesa = numeroMesa;
+        this.capacidad = capacidad;
         this.estado = estado;
     }
 
-    public Mesa(int idMesa, String nombreCliente, int dni, LocalDateTime fechaYhora, boolean estado) {
+    public Mesa(int idMesa,int numeroMesa, int capacidad, boolean estado) {
         this.idMesa = idMesa;
-        this.nombreCliente = nombreCliente;
-        this.dni = dni;
-        this.fechaYhora = fechaYhora;
+        this.numeroMesa = numeroMesa;
+        this.capacidad = capacidad;
         this.estado = estado;
     }
 
@@ -38,28 +33,20 @@ public class Mesa {
         this.idMesa = idMesa;
     }
 
-    public String getNombreCliente() {
-        return nombreCliente;
+    public int getNumeroMesa() {
+        return numeroMesa;
     }
 
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
+    public void setNumeroMesa(int numeroMesa) {
+        this.numeroMesa = numeroMesa;
     }
 
-    public int getDni() {
-        return dni;
+    public int getCapacidad() {
+        return capacidad;
     }
 
-    public void setDni(int dni) {
-        this.dni = dni;
-    }
-
-    public LocalDateTime getFechaYhora() {
-        return fechaYhora;
-    }
-
-    public void setFechaYhora(LocalDateTime fechaYhora) {
-        this.fechaYhora = fechaYhora;
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
     }
 
     public boolean isEstado() {
@@ -72,7 +59,7 @@ public class Mesa {
 
     @Override
     public String toString() {
-        return idMesa + ", " + nombreCliente + ", " + dni + ", " + fechaYhora + ", " + estado;
+        return idMesa + ", " + numeroMesa + ", " + capacidad + ", " + estado;
     } 
     
 }

@@ -17,25 +17,31 @@ public class Pedido {
     private int idMesa;
     private int idProducto;
     private int idMesero;
+    private int cantidad;
+    private double importe;
     private LocalDateTime fechaHora;
     private boolean estado;
 
     public Pedido() {
     }
 
-    public Pedido(int idMesa, int idProducto, int idMesero, LocalDateTime fechaHora, boolean estado) {
+    public Pedido(int idMesa, int idProducto, int idMesero, int cantidad, double importe, LocalDateTime fechaHora, boolean estado) {
         this.idMesa = idMesa;
         this.idProducto = idProducto;
         this.idMesero = idMesero;
+        this.cantidad = cantidad;
+        this.importe = importe;
         this.fechaHora = fechaHora;
         this.estado = estado;
     }
 
-    public Pedido(int idPedido, int idMesa, int idProducto, int idMesero, LocalDateTime fechaHora, boolean estado) {
+    public Pedido(int idPedido, int idMesa, int idProducto, int idMesero, int cantidad, double importe, LocalDateTime fechaHora, boolean estado) {
         this.idPedido = idPedido;
         this.idMesa = idMesa;
         this.idProducto = idProducto;
         this.idMesero = idMesero;
+        this.cantidad = cantidad;
+        this.importe = importe;
         this.fechaHora = fechaHora;
         this.estado = estado;
     }
@@ -72,6 +78,22 @@ public class Pedido {
         this.idMesero = idMesero;
     }
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public double getImporte() {
+        return importe;
+    }
+
+    public void setImporte(double importe) {
+        this.importe = importe;
+    }
+
     public LocalDateTime getFechaHora() {
         return fechaHora;
     }
@@ -90,7 +112,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return idPedido + ", " + idMesa + ", " + idProducto + ", " + idMesero + ", " + fechaHora + ", " + estado;
-    }  
+        return idPedido + ", " + idMesa + ", " + idProducto + ", " + idMesero + ", " + cantidad + ", " + importe + ", " + fechaHora + ", " + estado;
+    }
     
 }

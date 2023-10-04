@@ -7,9 +7,13 @@ package proyectofinal;
 
 import java.sql.Connection;
 import proyectofinal.BaseDatos.Conexion;
+import proyectofinal.BaseDatos.MesaData;
 import proyectofinal.BaseDatos.MeseroData;
+import proyectofinal.BaseDatos.PedidoData;
 import proyectofinal.BaseDatos.ProductoData;
+import proyectofinal.Tablas.Mesa;
 import proyectofinal.Tablas.Mesero;
+import proyectofinal.Tablas.Pedido;
 import proyectofinal.Tablas.Producto;
 
 /**
@@ -47,5 +51,12 @@ public class ProyectoFinal {
         //MeseroData meseData=new MeseroData();
         //meseData.agregarMesero(mese1);
         
+        Pedido pedi=new Pedido();
+        PedidoData pediData=new PedidoData();
+        pediData.agregarPedido(pedi);
+        
+        Mesa mesa1=new Mesa(1,4,true);
+        MesaData mesaData=new MesaData();
+        //mesaData.agregarMesa(mesa1);
     }
 }

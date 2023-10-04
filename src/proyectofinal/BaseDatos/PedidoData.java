@@ -28,7 +28,7 @@ public class PedidoData {
 
     public void agregarPedido(Pedido pedido) {
 
-        String sql = "INSERT INTO pedido (id_mesa, id_producto, id_mesero, fechaYhora, estado) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pedido (id_mesa, id_producto, id_mesero, cantidad, importe fechaYhora, estado) VALUES (?, ?, ?, ?, ?)";
         try {
             LocalDateTime localDateTime = LocalDateTime.now();
             java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf(localDateTime);
@@ -37,8 +37,10 @@ public class PedidoData {
             ps.setInt(1, pedido.getIdMesa());
             ps.setInt(2, pedido.getIdProducto());
             ps.setInt(3, pedido.getIdMesero());
-            ps.setTimestamp(1, java.sql.Timestamp.valueOf(pedido.getFechaHora()));
-            ps.setBoolean(5, true);
+            ps.setInt(4, pedido.getCantidad());
+            ps.setDouble(5, pedido.getImporte());
+            ps.setTimestamp(6, java.sql.Timestamp.valueOf(pedido.getFechaHora()));
+            ps.setBoolean(7, true);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
