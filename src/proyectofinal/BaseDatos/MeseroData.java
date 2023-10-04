@@ -45,4 +45,28 @@ public class MeseroData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ");
         }
     }
+
+    public void eliminarMesero(int id) {
+
+        String sql = "UPDATE mesero SET estado =0  where id_mesero =?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+            int elimino = ps.executeUpdate();
+
+            if (elimino == 1) {
+
+                JOptionPane.showMessageDialog(null, " Mesero eliminado ");
+
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al intentar acceder a la tabla Mesero ");
+
+        }
+    }
 }
