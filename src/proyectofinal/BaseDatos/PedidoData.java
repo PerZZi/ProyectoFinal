@@ -30,8 +30,7 @@ public class PedidoData {
 
         String sql = "INSERT INTO pedido (id_mesa, id_producto, cantidad, importe, fechaYhora, estado) VALUES (?, ?, ?, ?, ?, ?)";
         try {
-            
-     
+
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, pedido.getIdMesa());
             ps.setInt(2, pedido.getIdProducto());
@@ -49,6 +48,28 @@ public class PedidoData {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ");
+        }
+    }
+
+    public void eliminarPedido(int id) {
+        try {
+            String sql = "UPDATE pedido SET estado=0 WHERE id_Pedido=?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            int elimino = ps.executeUpdate();
+
+            if (elimino == 1) {
+
+                JOptionPane.showMessageDialog(null, "Pedido Eliminado");
+
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
+
         }
     }
 }

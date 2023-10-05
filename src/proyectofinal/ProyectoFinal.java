@@ -55,13 +55,15 @@ public class ProyectoFinal {
         
         Pedido pedi=new Pedido(1,4,2,200.0,LocalDateTime.of(2023, 05, 10, 10, 58, 10),true);
         PedidoData pediData=new PedidoData();
-        pediData.agregarPedido(pedi);
+        pediData.eliminarPedido(3);
         
         Mesa mesa1=new Mesa(1,6,true);
         MesaData mesaData=new MesaData();
         //mesaData.agregarMesa(mesa1);
         //mesaData.modificarMesa(mesa1);
         
-        Mesero mese=new Mesero();
+        Mesero mese=new Mesero("jose",3,true);
+        MeseroData mesedata=new MeseroData();
+        //mesedata.agregarMesero(mese);
     }
 }
