@@ -50,6 +50,32 @@ public class PedidoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ");
         }
     }
+    
+        public void modificarPedido(Pedido pedido) {
+
+        String sql = "UPDATE pedido SET id_mesa= ? ,id_producto= ? ,cantidad= ? ,importe= ? ,fechaYhora= ? ,estado= ? WHERE id_Pedido= ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, pedido.getIdMesa());
+            ps.setInt(2, pedido.getIdProducto());
+            ps.setInt(3, pedido.getCantidad());
+            ps.setDouble(4, pedido.getImporte());
+            ps.setTimestamp(5, java.sql.Timestamp.valueOf(pedido.getFechaHora()));
+            ps.setBoolean(6, pedido.isEstado());
+            ps.setInt(7, pedido.getIdPedido());
+            
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, " Se modifico el Pedido ");
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido ");
+
+        }
+    }
 
     public void eliminarPedido(int id) {
         try {
