@@ -25,10 +25,9 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(int idMesa, int idProducto, int idMesero, int cantidad, double importe, LocalDateTime fechaHora, boolean estado) {
+    public Pedido(int idMesa, int idProducto, int cantidad, double importe, LocalDateTime fechaHora, boolean estado) {
         this.idMesa = idMesa;
         this.idProducto = idProducto;
-        this.idMesero = idMesero;
         this.cantidad = cantidad;
         this.importe = importe;
         this.fechaHora = fechaHora;

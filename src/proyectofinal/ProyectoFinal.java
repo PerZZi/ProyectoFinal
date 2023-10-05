@@ -6,6 +6,7 @@
 package proyectofinal;
 
 import java.sql.Connection;
+import java.time.LocalDateTime;
 import proyectofinal.BaseDatos.Conexion;
 import proyectofinal.BaseDatos.MesaData;
 import proyectofinal.BaseDatos.MeseroData;
@@ -52,13 +53,15 @@ public class ProyectoFinal {
         //MeseroData meseData=new MeseroData();
         //meseData.agregarMesero(mese1);
         
-        //Pedido pedi=new Pedido();
-        //PedidoData pediData=new PedidoData();
-        //pediData.agregarPedido(pedi);
+        Pedido pedi=new Pedido(1,4,2,200.0,LocalDateTime.of(2023, 05, 10, 10, 58, 10),true);
+        PedidoData pediData=new PedidoData();
+        pediData.agregarPedido(pedi);
         
         Mesa mesa1=new Mesa(1,6,true);
         MesaData mesaData=new MesaData();
         //mesaData.agregarMesa(mesa1);
         //mesaData.modificarMesa(mesa1);
+        
+        Mesero mese=new Mesero();
     }
 }
