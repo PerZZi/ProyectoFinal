@@ -6,6 +6,7 @@
 package proyectofinal.Tablas;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +16,7 @@ public class Pedido {
     
     private int idPedido;
     private int idMesa;
-    private int idProducto;
+    private ArrayList<Producto> productos;
     private int cantidad;
     private double importe;
     private LocalDateTime fechaHora;
@@ -24,19 +25,18 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(int idMesa, int idProducto, int cantidad, double importe, LocalDateTime fechaHora, boolean estado) {
+    public Pedido(int idMesa, ArrayList<Producto> productos, int cantidad, LocalDateTime fechaHora, boolean estado) {
         this.idMesa = idMesa;
-        this.idProducto = idProducto;
+        this.productos = productos;
         this.cantidad = cantidad;
-        this.importe = importe;
         this.fechaHora = fechaHora;
         this.estado = estado;
     }
 
-    public Pedido(int idPedido, int idMesa, int idProducto, int cantidad, double importe, LocalDateTime fechaHora, boolean estado) {
+    public Pedido(int idPedido, int idMesa, ArrayList<Producto> productos, int cantidad, double importe, LocalDateTime fechaHora, boolean estado) {
         this.idPedido = idPedido;
         this.idMesa = idMesa;
-        this.idProducto = idProducto;
+        this.productos = productos;
         this.cantidad = cantidad;
         this.importe = importe;
         this.fechaHora = fechaHora;
@@ -59,12 +59,12 @@ public class Pedido {
         this.idMesa = idMesa;
     }
 
-    public int getIdProducto() {
-        return idProducto;
+    public ArrayList<Producto> getProductos() {
+        return productos;
     }
 
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
     }
 
     public int getCantidad() {
@@ -101,7 +101,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return idPedido + ", " + idMesa + ", " + idProducto + ", " + cantidad + ", " + importe + ", " + fechaHora + ", " + estado;
+        return idPedido + ", " + idMesa + ", " + productos + ", " + cantidad + ", " + importe + ", " + fechaHora + ", " + estado;
     }
-    
+
 }

@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 import proyectofinal.Tablas.Pedido;
+import proyectofinal.Tablas.Producto;
 
 /**
  *
@@ -27,13 +28,13 @@ public class PedidoData {
     }
 
     public void agregarPedido(Pedido pedido) {
-
-        String sql = "INSERT INTO pedido (id_mesa, id_producto, cantidad, importe, fechaYhora, estado) VALUES (?, ?, ?, ?, ?, ?)";
+        
+        String sql = "INSERT INTO pedido (id_mesa, cantidad, importe, fechaYhora, estado) VALUES (?, ?, ?, ?, ? )";
         try {
-
+            
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, pedido.getIdMesa());
-            ps.setInt(2, pedido.getIdProducto());
+
             ps.setInt(3, pedido.getCantidad());
             ps.setDouble(4, pedido.getImporte());
             ps.setTimestamp(5, java.sql.Timestamp.valueOf(pedido.getFechaHora()));
@@ -50,21 +51,20 @@ public class PedidoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ");
         }
     }
-    
-        public void modificarPedido(Pedido pedido) {
 
-        String sql = "UPDATE pedido SET id_mesa= ? ,id_producto= ? ,cantidad= ? ,importe= ? ,fechaYhora= ? ,estado= ? WHERE id_Pedido= ?";
+    public void modificarPedido(Pedido pedido) {
+
+        String sql = "UPDATE pedido SET id_mesa= ? ,cantidad= ? ,importe= ? ,fechaYhora= ? ,estado= ? WHERE id_Pedido= ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, pedido.getIdMesa());
-            ps.setInt(2, pedido.getIdProducto());
             ps.setInt(3, pedido.getCantidad());
             ps.setDouble(4, pedido.getImporte());
             ps.setTimestamp(5, java.sql.Timestamp.valueOf(pedido.getFechaHora()));
             ps.setBoolean(6, pedido.isEstado());
             ps.setInt(7, pedido.getIdPedido());
-            
+
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, " Se modifico el Pedido ");
@@ -97,5 +97,34 @@ public class PedidoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
 
         }
+    }
+
+    public double calcularSubtotalPedido(int idPedido) {
+
+        double subtotal = 0.0;
+        String sql = "SELECT p.importe, pr.precio "
+                + "FROM pedido p "
+                + "JOIN producto pr ON p.id_producto = pr.id_Codigo "
+                + "WHERE p.id_Pedido = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idPedido);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                double importe = rs.getDouble("importe");
+                double precioProducto = rs.getDouble("precio");
+                subtotal += (importe + (precioProducto * importe));
+            }
+
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al calcular el subtotal del pedido");
+        }
+
+        System.out.println("Subtotal del pedido " + idPedido + ": $" + subtotal);
+        return subtotal;
     }
 }

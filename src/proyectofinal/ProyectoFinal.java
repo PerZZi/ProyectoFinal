@@ -53,10 +53,11 @@ public class ProyectoFinal {
         //MeseroData meseData=new MeseroData();
         //meseData.agregarMesero(mese1);
         
-        Pedido pedi=new Pedido(1,4,2,300.0,LocalDateTime.of(2023, 05, 10, 10, 58, 10),true);
+        Pedido pedi=new Pedido(1,2,LocalDateTime.of(2023, 05, 10, 10, 58, 10),true);
         PedidoData pediData=new PedidoData();
         //pediData.eliminarPedido(3);
-        pediData.modificarPedido(pedi);
+        //pediData.modificarPedido(pedi);
+        pediData.calcularSubtotalPedido(3);
                 
         Mesa mesa1=new Mesa(1,6,true);
         MesaData mesaData=new MesaData();
