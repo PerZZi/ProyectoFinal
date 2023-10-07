@@ -6,10 +6,15 @@
 package proyectofinal;
 
 import java.sql.Connection;
+import java.time.LocalDateTime;
 import proyectofinal.BaseDatos.Conexion;
+import proyectofinal.BaseDatos.MesaData;
 import proyectofinal.BaseDatos.MeseroData;
+import proyectofinal.BaseDatos.PedidoData;
 import proyectofinal.BaseDatos.ProductoData;
+import proyectofinal.Tablas.Mesa;
 import proyectofinal.Tablas.Mesero;
+import proyectofinal.Tablas.Pedido;
 import proyectofinal.Tablas.Producto;
 
 /**
@@ -33,10 +38,11 @@ public class ProyectoFinal {
 //        
         Producto pro2 = new Producto();
         pro2.setNombre("tallarines");
-        pro2.setStock(20);
+        pro2.setStock(15);
         pro2.setPrecio(500.0);
         ProductoData pro2Data = new ProductoData();
         //pro2Data.agregarProducto(pro2);
+        pro2Data.modificarProducto(pro2);
         
         //Producto productoEncontrado= pro2Data.buscarProductoPorNombre("tallarines");
         //System.out.println("Nombre " + productoEncontrado.getNombre());
@@ -47,5 +53,19 @@ public class ProyectoFinal {
         //MeseroData meseData=new MeseroData();
         //meseData.agregarMesero(mese1);
         
+        Pedido pedi=new Pedido(1,2,LocalDateTime.of(2023, 05, 10, 10, 58, 10),true);
+        PedidoData pediData=new PedidoData();
+        //pediData.eliminarPedido(3);
+        //pediData.modificarPedido(pedi);
+        pediData.calcularSubtotalPedido(3);
+                
+        Mesa mesa1=new Mesa(1,6,true);
+        MesaData mesaData=new MesaData();
+        //mesaData.agregarMesa(mesa1);
+        //mesaData.modificarMesa(mesa1);
+        
+        Mesero mese=new Mesero("jose",3,true);
+        MeseroData mesedata=new MeseroData();
+        //mesedata.agregarMesero(mese);
     }
 }

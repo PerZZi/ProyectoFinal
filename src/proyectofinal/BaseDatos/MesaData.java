@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 import proyectofinal.Tablas.Mesa;
 
@@ -28,25 +27,21 @@ public class MesaData {
 
     public void agregarMesa(Mesa mesa) {
 
-        String sql = "INSERT INTO producto (id_mesa,nombreCliente,dni,fechaYhora,estado) VALUES (?, ?, ?, ?,?)";
+        String sql = "INSERT INTO mesa (NroMesa, capacidad, estado) VALUES (?, ?, ?)";
 
         try {
 
-            LocalDateTime localDateTime = LocalDateTime.now();
-            java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf(localDateTime);
-
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, mesa.getIdMesa());
-            ps.setString(2, mesa.getNombreCliente());
-            ps.setInt(3, mesa.getDni());
-            ps.setTimestamp(1, java.sql.Timestamp.valueOf(mesa.getFechaYhora()));
-            ps.setBoolean(5, mesa.isEstado());
+            ps.setInt(1, mesa.getNumeroMesa());
+            ps.setInt(2, mesa.getCapacidad());
+            ps.setBoolean(3, mesa.isEstado());
+            ps.setInt(4, mesa.getIdMesa());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
 
             if (rs.next()) {
                 mesa.setIdMesa(1);
-                JOptionPane.showMessageDialog(null, " Mesa agregada ");
+                JOptionPane.showMessageDialog(null, "Mesa agregada ");
 
             }
             ps.close();
@@ -81,22 +76,21 @@ public class MesaData {
     }
 
     public void modificarMesa(Mesa mesa) {
-        String sql = "UPDATE mesa SET idMesa=?, nombreCliente=?, dni=?, fechaYhora=? WHERE estado=?";
+        
+        String sql = "UPDATE mesa SET NroMesa= ?, capacidad= ?,estado= ? WHERE id_Mesa= ?";
+        
         try {
-            LocalDateTime localDateTime = LocalDateTime.now();
-            java.sql.Timestamp timestamp = java.sql.Timestamp.valueOf(localDateTime);
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, mesa.getIdMesa());
-            ps.setString(2, mesa.getNombreCliente());
-            ps.setInt(3, mesa.getDni());
-            ps.setTimestamp(4, java.sql.Timestamp.valueOf(mesa.getFechaYhora()));
-            ps.setBoolean(5, true);
+            ps.setInt(1, mesa.getNumeroMesa());
+            ps.setInt(2, mesa.getCapacidad());
+            ps.setBoolean(3, mesa.isEstado());
+            ps.setInt(4, mesa.getIdMesa());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 mesa.setIdMesa(1);
-                JOptionPane.showMessageDialog(null, "Pedido Modificado");
+                JOptionPane.showMessageDialog(null, "Mesa modificado");
             }
             ps.close();
 
