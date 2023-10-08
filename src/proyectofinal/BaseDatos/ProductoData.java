@@ -30,24 +30,36 @@ public class ProductoData {
     }
 
         public void agregarProducto(Producto producto) {
+            
+            String sql = "SELECT * FROM producto WHERE nombre = ?";
+            try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, producto.getNombre());
+        ResultSet rs = ps.executeQuery();
 
-        String sql = "INSERT INTO producto (nombre, stock, precio, estado) VALUES (?, ?, ?, ?)";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        if (rs.next()) {
+            // El producto ya existe en la base de datos
+            JOptionPane.showMessageDialog(null, "El producto ingresado ya existe");
+            return;
+        }
+
+         sql = "INSERT INTO producto (nombre, stock, precio, estado) VALUES (?, ?, ?, ?)";
+        
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, producto.getNombre());
             ps.setInt(2, producto.getStock());
             ps.setDouble(3, producto.getPrecio());
             ps.setBoolean(4, true);
             ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
+            rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 producto.setIdCodigo(1);
-                JOptionPane.showMessageDialog(null, "Se agrego un producto");
+                JOptionPane.showMessageDialog(null, "Se agrego un nuevo producto");
             }
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto");
         }
     }
 
@@ -66,12 +78,12 @@ public class ProductoData {
             int exito = ps.executeUpdate();
             if (exito == 1) {
 
-                JOptionPane.showMessageDialog(null, "Producto Modificado ");
+                JOptionPane.showMessageDialog(null, "Producto Modificado exitosamente ");
             }
 
         } catch (SQLException ex) {
 
-            JOptionPane.showMessageDialog(null, "Error al tratar de acceder a la tabla alumno");
+            JOptionPane.showMessageDialog(null, "Error al tratar de acceder a la tabla producto");
 
         }
     }
