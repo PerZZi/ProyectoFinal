@@ -35,10 +35,10 @@ public class PedidoData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, pedido.getIdMesa());
 
-            ps.setInt(3, pedido.getCantidad());
-            ps.setDouble(4, pedido.getImporte());
-            ps.setTimestamp(5, java.sql.Timestamp.valueOf(pedido.getFechaHora()));
-            ps.setBoolean(6, true);
+            ps.setInt(2, pedido.getCantidad());
+            ps.setDouble(3, pedido.getImporte());
+            ps.setTimestamp(4, java.sql.Timestamp.valueOf(pedido.getFechaHora()));
+            ps.setBoolean(5, true);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -102,9 +102,8 @@ public class PedidoData {
     public double calcularSubtotalPedido(int idPedido) {
 
         double subtotal = 0.0;
-        String sql = "SELECT p.importe, pr.precio "
+        String sql = "SELECT p.cantidad, p.importe "
                 + "FROM pedido p "
-                + "JOIN producto pr ON p.id_producto = pr.id_Codigo "
                 + "WHERE p.id_Pedido = ?";
 
         try {
@@ -113,9 +112,9 @@ public class PedidoData {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                double importe = rs.getDouble("importe");
-                double precioProducto = rs.getDouble("precio");
-                subtotal += (importe + (precioProducto * importe));
+                int cantidad = rs.getInt("cantidad");
+                double precioProducto = rs.getDouble("importe");
+                subtotal += cantidad * precioProducto;
             }
 
             rs.close();
@@ -127,4 +126,16 @@ public class PedidoData {
         System.out.println("Subtotal del pedido " + idPedido + ": $" + subtotal);
         return subtotal;
     }
-}
+    
+    public void agregarProducto() {
+
+        
+        }
+
+    
+    
+    
+    
+    
+    } 
+    

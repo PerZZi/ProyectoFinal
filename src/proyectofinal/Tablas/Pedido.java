@@ -16,7 +16,6 @@ public class Pedido {
     
     private int idPedido;
     private int idMesa;
-    private ArrayList<Producto> productos;
     private int cantidad;
     private double importe;
     private LocalDateTime fechaHora;
@@ -25,18 +24,18 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(int idMesa, ArrayList<Producto> productos, int cantidad, LocalDateTime fechaHora, boolean estado) {
+    public Pedido(int idMesa,  int cantidad, LocalDateTime fechaHora, boolean estado) {
         this.idMesa = idMesa;
-        this.productos = productos;
+        
         this.cantidad = cantidad;
         this.fechaHora = fechaHora;
         this.estado = estado;
     }
 
-    public Pedido(int idPedido, int idMesa, ArrayList<Producto> productos, int cantidad, double importe, LocalDateTime fechaHora, boolean estado) {
+    public Pedido(int idPedido, int idMesa,  int cantidad, double importe, LocalDateTime fechaHora, boolean estado) {
         this.idPedido = idPedido;
         this.idMesa = idMesa;
-        this.productos = productos;
+        
         this.cantidad = cantidad;
         this.importe = importe;
         this.fechaHora = fechaHora;
@@ -57,14 +56,6 @@ public class Pedido {
 
     public void setIdMesa(int idMesa) {
         this.idMesa = idMesa;
-    }
-
-    public ArrayList<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(ArrayList<Producto> productos) {
-        this.productos = productos;
     }
 
     public int getCantidad() {
@@ -101,7 +92,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return idPedido + ", " + idMesa + ", " + productos + ", " + cantidad + ", " + importe + ", " + fechaHora + ", " + estado;
+        return idPedido + ", " + idMesa + ", " + cantidad + ", " + importe + ", " + fechaHora + ", " + estado;
     }
 
 }
