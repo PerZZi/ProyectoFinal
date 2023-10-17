@@ -5,6 +5,8 @@
  */
 package restaurat.Vistas;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Noelia
@@ -16,6 +18,7 @@ public class Pedidos extends javax.swing.JInternalFrame {
      */
     public Pedidos() {
         initComponents();
+       
     }
 
     /**
@@ -55,4 +58,6 @@ public class Pedidos extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+ 
+
 }
