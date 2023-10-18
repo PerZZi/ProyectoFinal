@@ -13,7 +13,7 @@ public class Restaurante extends javax.swing.JFrame {
     public Restaurante() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setSize(500,520);
+        this.setSize(810,720);
         
     }
 
@@ -91,6 +91,11 @@ public class Restaurante extends javax.swing.JFrame {
         jmenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinal/recursos/estadistica.png"))); // NOI18N
 
         jMenuItem4.setText("Estadisticas de los Meseros..");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jmenu3.add(jMenuItem4);
 
         jMenuBar2.add(jmenu3);
@@ -129,13 +134,32 @@ public class Restaurante extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+        
+         escritorio.removeAll();
+        escritorio.repaint();
+       Pedidos pedi = new Pedidos();
+       pedi.setVisible(true);
+        escritorio.add(pedi);
+        escritorio.moveToFront(pedi);
+        
+        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
        
      
     }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        
+         escritorio.removeAll();
+        escritorio.repaint();
+       Estadisticas estad = new Estadisticas();
+       estad.setVisible(true);
+        escritorio.add(estad);
+        escritorio.moveToFront(estad);
+        
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments

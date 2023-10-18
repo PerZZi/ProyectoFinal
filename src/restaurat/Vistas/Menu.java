@@ -20,7 +20,7 @@ public class Menu extends javax.swing.JInternalFrame {
     public Menu() {
         initComponents();
       
-        this.setSize(500,520);
+        this.setSize(795,600);
         
      
                 
@@ -44,6 +44,7 @@ public class Menu extends javax.swing.JInternalFrame {
 
         };
 
+        setClosable(true);
         setPreferredSize(new java.awt.Dimension(530, 480));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
