@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import proyectofinal.Tablas.Mesa;
 
@@ -98,4 +100,19 @@ public class MesaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ");
         }
     }
-}
+
+    public ArrayList<Mesa> listarMesero() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    }
+
+
+
+
+
+
+
+
+

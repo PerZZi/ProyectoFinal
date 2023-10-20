@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import proyectofinal.Tablas.Mesero;
 
@@ -69,4 +71,39 @@ public class MeseroData {
 
         }
     }
+    
+    public List<Mesero> listarMesero() {
+        
+        String sql = "SELECT idMesero, nombre, idpedido,  FROM mesero WHERE estado= 1";
+        
+        ArrayList<Mesero> meseros =new ArrayList<>();
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()) {  
+                
+             Mesero mesero = new Mesero();                
+                 mesero.setId_mesero(rs.getInt("idMesero"));
+                 mesero.setNombre(rs.getString("Nombre"));
+                 mesero.setId_pedido(rs.getInt("Idpedido"));      
+                 mesero.setEstado(true);
+                
+               meseros.add(mesero);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al accder a la tabla meseros " + ex.getMessage());
+            
+        }
+        
+        return meseros;
+    }
+
+
+
+
 }
