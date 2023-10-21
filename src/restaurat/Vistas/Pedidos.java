@@ -11,41 +11,56 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal.BaseDatos.Conexion;
 import proyectofinal.BaseDatos.MesaData;
 import proyectofinal.BaseDatos.MeseroData;
+import proyectofinal.BaseDatos.ProductoData;
 
 import proyectofinal.Tablas.Mesa;
 import proyectofinal.Tablas.Mesero;
+import proyectofinal.Tablas.Producto;
 
 
 
 
 
 public class Pedidos extends javax.swing.JInternalFrame {
+    
     private DefaultTableModel tabla =new DefaultTableModel();
+    private Conexion con = new Conexion();
+    private ProductoData produ = new ProductoData();
+    private MeseroData mozo = new MeseroData();
+    private MesaData mesa= new MesaData();
+    
+    private ArrayList<Mesero> Meseros;
+    private ArrayList<Mesa> Mesas;
+    private List<Producto> productos = new ArrayList<>();
+
+
+    
+    
     
     public Pedidos() {
         initComponents();
         this.setSize(795,600);
         armarTabla();
+        productos = produ.ListarProductos();
+        System.out.println("Cantidad de productos: " + productos.size());
+        listarProductos();
         
-        mesa= new MesaData();
-        listaMesa = mesa.listarMesero();
-        tabla=new DefaultTableModel();
         
-        cargarMesero();
+        
+        
+        
+        
         
     }
 
-private ArrayList<Mesero>listM;
-private ArrayList<Mesa>listaMesa;
 
-private MeseroData mozo;
-private MesaData mesa;
     
     
     
@@ -186,16 +201,14 @@ private MesaData mesa;
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jBeliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBpagar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jBpagar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap(8, Short.MAX_VALUE)
@@ -248,10 +261,11 @@ private MesaData mesa;
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jComboMozo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboMozo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jRadioButton1)
+                        .addComponent(jRadioButton2)))
                 .addGap(23, 23, 23)
                 .addComponent(jDFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -337,66 +351,36 @@ private MesaData mesa;
     private javax.swing.JTable jTtabla;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarMesero(){
     
-    for(Mesa item: listaMesa){
-        jComboMozo.addItem(title);
-    
-    }
-    
-    }
-    
-    private void tablaMesero(){
-    ArrayList<Object> filaCabecera=new ArrayList<>();
-    filaCabecera.add("Mesa y Mozo N°");
-    for(Object it:filaCabecera){
-        tabla.addColumn(it);
-    
-    }
-    jTtabla.setModel(tabla);
-    }
-    
-
-private void armarTabla(){
+    private void armarTabla(){
 
     tabla.addColumn("Productos");
     tabla.addColumn("Cantidad");
-    tabla.addColumn("Mesa y Mozo N°");  
-    tabla.addColumn("Sub Total");
+    tabla.addColumn("Mesa");  
+    tabla.addColumn("SubTotal");
     jTtabla.setModel(tabla);
 
-   String sql ="select*from"+tabla;
-      Statement st;
-      Conexion con=new Conexion();
-      Connection Conexion=con.getConnection();
-      System.out.println(sql);
-      
-      String [] datos=new String [4];
-      try{
-      
-          st= Conexion.createStatement();
-          ResultSet rs=st.executeQuery(sql);
-          while(rs.next()){
-          
-          datos[0]=rs.getString(1);
-          datos[1]=rs.getString(2);
-          datos[2]=rs.getString(3);
-          datos[3]=rs.getString(4);
-          tabla.addRow(datos);
-          }
-          
-          
-          
-      }catch(SQLException e){
-      
-      JOptionPane.showMessageDialog(null,"Error al cargar la tabla");
-      }
-      
-
 }
 
-
-
-
-
+    private void listarProductos() {
+    tabla = (DefaultTableModel) jTtabla.getModel();
+    for (Producto producto : productos) {
+        String nombreProducto = producto.getNombre();
+        Object[] fila = {nombreProducto};
+        tabla.addRow(fila);
+    }
 }
+   
+    }
+
+
+    
+    
+    
+    
+
+
+
+
+
+
