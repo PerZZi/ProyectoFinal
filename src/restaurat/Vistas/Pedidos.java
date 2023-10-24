@@ -289,7 +289,6 @@ public class Pedidos extends javax.swing.JInternalFrame {
 
     private void jTtablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTtablaMouseClicked
         
-   calcularSubtotalPedido();
 
         
         
