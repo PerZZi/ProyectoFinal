@@ -177,7 +177,7 @@ public class ProductoData {
          
          ArrayList<Producto> productos=new ArrayList();
          try{
-             PreparedStatement ps=con.prepareCall(sql);
+             PreparedStatement ps=con.prepareStatement(sql);
              
              ResultSet rs = ps.executeQuery();
              
@@ -190,6 +190,7 @@ public class ProductoData {
                  producto.setEstado(true);
                  
                  productos.add(producto);
+                 
              }
              ps.close();
              
