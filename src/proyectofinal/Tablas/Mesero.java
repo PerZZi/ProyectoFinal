@@ -15,16 +15,16 @@ public class Mesero {
     public Mesero() {
     }
 
-    public Mesero(String nombre, int id_pedido, boolean estado) {
+    public Mesero(String nombre,  boolean estado) {
         this.nombre = nombre;
-        this.id_pedido = id_pedido;
+        
         this.estado = estado;
     }
 
     public Mesero(int id_mesero, String nombre, int id_pedido, boolean estado) {
         this.id_mesero = id_mesero;
         this.nombre = nombre;
-        this.id_pedido = id_pedido;
+        
         this.estado = estado;
     }
     
