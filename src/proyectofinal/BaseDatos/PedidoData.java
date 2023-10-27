@@ -10,7 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import proyectofinal.Tablas.Pedido;
 import proyectofinal.Tablas.Producto;
@@ -28,22 +30,22 @@ public class PedidoData {
     }
 
     public void agregarPedido(Pedido pedido) {
-        
-        String sql = "INSERT INTO pedido (id_mesa, cantidad, importe, fechaYhora, estado) VALUES (?, ?, ?, ?, ? )";
+
+        String sql = "INSERT INTO pedido (id_mesa, NroMesa, importe, fechaYhora, estado) VALUES (?, ?, ?, ?, ? )";
         try {
-            
+
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, pedido.getIdMesa());
-
-            ps.setInt(2, pedido.getCantidad());
+            ps.setInt(2, pedido.getNroMesa());
             ps.setDouble(3, pedido.getImporte());
-            ps.setTimestamp(4, java.sql.Timestamp.valueOf(pedido.getFechaHora()));
+            ps.setTimestamp(4, (Timestamp) pedido.getFechaHora());
             ps.setBoolean(5, true);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                pedido.setIdPedido(1);
-                JOptionPane.showMessageDialog(null, "Pedido registrado");
+                int idGenerada = rs.getInt(1);
+                pedido.setIdPedido(idGenerada);
+                JOptionPane.showMessageDialog(null, "Pedido registrado con el ID: "+ idGenerada);
             }
             ps.close();
 
@@ -54,16 +56,16 @@ public class PedidoData {
 
     public void modificarPedido(Pedido pedido) {
 
-        String sql = "UPDATE pedido SET id_mesa= ? ,cantidad= ? ,importe= ? ,fechaYhora= ? ,estado= ? WHERE id_Pedido= ?";
+        String sql = "UPDATE pedido SET id_mesa= ? ,NroMesa= ? ,importe= ? ,fechaYhora= ? ,estado= ? WHERE id_Pedido= ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, pedido.getIdMesa());
-            ps.setInt(3, pedido.getCantidad());
-            ps.setDouble(4, pedido.getImporte());
-            ps.setTimestamp(5, java.sql.Timestamp.valueOf(pedido.getFechaHora()));
-            ps.setBoolean(6, pedido.isEstado());
-            ps.setInt(7, pedido.getIdPedido());
+            ps.setInt(2, pedido.getNroMesa());
+            ps.setDouble(3, pedido.getImporte());
+            ps.setTimestamp(4, (Timestamp) pedido.getFechaHora());
+            ps.setBoolean(5, pedido.isEstado());
+            
 
             int exito = ps.executeUpdate();
             if (exito == 1) {
@@ -98,44 +100,38 @@ public class PedidoData {
 
         }
     }
+    
+    public List<Pedido> listarPedidos() {
 
-    public double calcularSubtotalPedido(int idPedido) {
+        String sql = "SELECT id_Pedido, NroMesa, importe, fechaYhora, estado FROM pedido;";
 
-        double subtotal = 0.0;
-        String sql = "SELECT p.cantidad, p.importe "
-                + "FROM pedido p "
-                + "WHERE p.id_Pedido = ?";
-
+        ArrayList<Pedido> pedidos = new ArrayList<>();
         try {
+
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idPedido);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                int cantidad = rs.getInt("cantidad");
-                double precioProducto = rs.getDouble("importe");
-                subtotal += cantidad * precioProducto;
+
+                Pedido pedido = new Pedido();
+                pedido.setIdPedido(rs.getInt("id_Pedido"));
+                pedido.setNroMesa(rs.getInt("NroMesa"));
+                pedido.setImporte(rs.getDouble("importe"));
+                pedido.setFechaHora(rs.getTimestamp("fechaYhora"));
+                pedido.setEstado(rs.getBoolean("estado"));
+                
+                pedidos.add(pedido);
             }
 
-            rs.close();
             ps.close();
+
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al calcular el subtotal del pedido");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla meseros " + ex.getMessage());
         }
 
-        System.out.println("Subtotal del pedido " + idPedido + ": $" + subtotal);
-        return subtotal;
+        return pedidos;
     }
-    
-    public void agregarProducto() {
 
-        
-        }
-
-    
-    
-    
-    
-    
+  
     } 
     

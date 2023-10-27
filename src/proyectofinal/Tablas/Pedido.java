@@ -7,6 +7,7 @@ package proyectofinal.Tablas;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -16,27 +17,26 @@ public class Pedido {
     
     private int idPedido;
     private int idMesa;
-    private int cantidad;
+    private int NroMesa;
     private double importe;
-    private LocalDateTime fechaHora;
+    private java.util.Date fechaHora;
     private boolean estado;
 
     public Pedido() {
     }
 
-    public Pedido(int idMesa,  int cantidad, LocalDateTime fechaHora, boolean estado) {
+    public Pedido(int idPedido, int idMesa, int NroMesa, double importe, Date fechaHora, boolean estado) {
+        this.idPedido = idPedido;
         this.idMesa = idMesa;
-        
-        this.cantidad = cantidad;
+        this.NroMesa = NroMesa;
+        this.importe = importe;
         this.fechaHora = fechaHora;
         this.estado = estado;
     }
 
-    public Pedido(int idPedido, int idMesa,  int cantidad, double importe, LocalDateTime fechaHora, boolean estado) {
-        this.idPedido = idPedido;
+    public Pedido(int idMesa, int NroMesa, double importe, Date fechaHora, boolean estado) {
         this.idMesa = idMesa;
-        
-        this.cantidad = cantidad;
+        this.NroMesa = NroMesa;
         this.importe = importe;
         this.fechaHora = fechaHora;
         this.estado = estado;
@@ -58,12 +58,12 @@ public class Pedido {
         this.idMesa = idMesa;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getNroMesa() {
+        return NroMesa;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setNroMesa(int NroMesa) {
+        this.NroMesa = NroMesa;
     }
 
     public double getImporte() {
@@ -74,11 +74,11 @@ public class Pedido {
         this.importe = importe;
     }
 
-    public LocalDateTime getFechaHora() {
+    public Date getFechaHora() {
         return fechaHora;
     }
 
-    public void setFechaHora(LocalDateTime fechaHora) {
+    public void setFechaHora(Date fechaHora) {
         this.fechaHora = fechaHora;
     }
 
@@ -92,7 +92,9 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return idPedido + ", " + idMesa + ", " + cantidad + ", " + importe + ", " + fechaHora + ", " + estado;
+        return "Pedido{" + "idPedido=" + idPedido + ", idMesa=" + idMesa + ", NroMesa=" + NroMesa + ", importe=" + importe + ", fechaHora=" + fechaHora + ", estado=" + estado + '}';
     }
+
+    
 
 }
