@@ -52,19 +52,24 @@ public class ProyectoFinal {
         //Mesero mese1=new Mesero("Joaquin",5, true);
         //MeseroData meseData=new MeseroData();
         //meseData.agregarMesero(mese1);
+ 
+       
         
-        Pedido pedi=new Pedido(1,2,LocalDateTime.of(2023, 05, 10, 10, 58, 10),true);
-        PedidoData pediData=new PedidoData();
+//      No en uso//  Pedido pedi=new Pedido(1,2,LocalDateTime.of(2023, 05, 10, 10, 58, 10),true);
+        
+
+           Pedido pedi = new Pedido(3,5,);
+PedidoData pediData=new PedidoData();
         //pediData.eliminarPedido(3);
         //pediData.modificarPedido(pedi);
-        pediData.calcularSubtotalPedido(3);
+    
                 
         Mesa mesa1=new Mesa(1,6,true);
         MesaData mesaData=new MesaData();
         //mesaData.agregarMesa(mesa1);
         //mesaData.modificarMesa(mesa1);
         
-        Mesero mese=new Mesero("jose",3,true);
+        Mesero mese=new Mesero("jose",true);
         MeseroData mesedata=new MeseroData();
         //mesedata.agregarMesero(mese);
     }

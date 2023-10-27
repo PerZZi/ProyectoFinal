@@ -3,13 +3,27 @@ package restaurat.Vistas;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
+import proyectofinal.BaseDatos.Conexion;
+import proyectofinal.BaseDatos.MesaData;
+import proyectofinal.BaseDatos.MeseroData;
+import proyectofinal.BaseDatos.PedidoData;
+import proyectofinal.BaseDatos.ProductoData;
+import proyectofinal.Tablas.Mesa;
+import proyectofinal.Tablas.Mesero;
+import proyectofinal.Tablas.Producto;
 
 
 public class Estadisticas extends javax.swing.JInternalFrame {
 private DefaultTableModel tabla2 =new DefaultTableModel();
-   
+    private List<Mesero>listaMeseros= new ArrayList<>();
+    
+    
+    private MeseroData mozo;
+    
     public Estadisticas() {
         initComponents();
         this.setSize(795,600);
@@ -39,6 +53,7 @@ private DefaultTableModel tabla2 =new DefaultTableModel();
         jTtabla2 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
 
+        setClosable(true);
         setPreferredSize(new java.awt.Dimension(744, 567));
 
         jLabel1.setFont(new java.awt.Font("Lucida Handwriting", 3, 24)); // NOI18N
@@ -65,6 +80,11 @@ private DefaultTableModel tabla2 =new DefaultTableModel();
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
             }
         });
 
@@ -125,6 +145,12 @@ private DefaultTableModel tabla2 =new DefaultTableModel();
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+      
+        
+        
+    }//GEN-LAST:event_jTextField1KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -34,6 +34,9 @@ public class Restaurante extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jmenu3 = new javax.swing.JMenu();
@@ -73,6 +76,30 @@ public class Restaurante extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem2);
+
+        jMenuItem1.setText("Agregar Productos..");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem5.setText("Agregar Meseros..");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
+
+        jMenuItem7.setText("Agregar Mesas..");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem7);
 
         jMenuBar2.add(jMenu1);
 
@@ -140,9 +167,7 @@ public class Restaurante extends javax.swing.JFrame {
        Pedidos pedi = new Pedidos();
        pedi.setVisible(true);
         escritorio.add(pedi);
-        escritorio.moveToFront(pedi);
-        
-        
+        escritorio.moveToFront(pedi);        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
@@ -157,9 +182,36 @@ public class Restaurante extends javax.swing.JFrame {
        Estadisticas estad = new Estadisticas();
        estad.setVisible(true);
         escritorio.add(estad);
-        escritorio.moveToFront(estad);
-        
+        escritorio.moveToFront(estad);       
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        AgregarMesero agm= new AgregarMesero();
+        agm.setVisible(true);
+        escritorio.add(agm);
+        escritorio.moveToFront(agm);         
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        
+        escritorio.removeAll();
+        escritorio.repaint();
+        AgregarProducto agp= new AgregarProducto();
+        agp.setVisible(true);
+        escritorio.add(agp);
+        escritorio.moveToFront(agp);        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        AgregarMesas agme=new AgregarMesas();
+        agme.setVisible(true);
+        escritorio.add(agme);
+        escritorio.moveToFront(agme);      
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,10 +254,13 @@ public class Restaurante extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenu jmenu3;
     // End of variables declaration//GEN-END:variables
 }
