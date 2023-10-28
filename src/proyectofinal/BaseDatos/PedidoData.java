@@ -31,40 +31,40 @@ public class PedidoData {
 
     public void agregarPedido(Pedido pedido) {
 
-        String sql = "INSERT INTO pedido (id_mesa, NroMesa, importe, fechaYhora, estado) VALUES (?, ?, ?, ?, ? )";
+        String sql = "INSERT INTO pedido (NroMesa, importe, fechaYhora, estado) VALUES (?, ?, ?, ? )";
         try {
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, pedido.getIdMesa());
-            ps.setInt(2, pedido.getNroMesa());
-            ps.setDouble(3, pedido.getImporte());
-            ps.setTimestamp(4, (Timestamp) pedido.getFechaHora());
-            ps.setBoolean(5, true);
+            
+            ps.setInt(1, pedido.getNroMesa());
+            ps.setDouble(2, pedido.getImporte());
+            ps.setTimestamp(3,  pedido.getFechaHora());
+            ps.setBoolean(4, true);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 int idGenerada = rs.getInt(1);
                 pedido.setIdPedido(idGenerada);
-                JOptionPane.showMessageDialog(null, "Pedido registrado con el ID: "+ idGenerada);
+                JOptionPane.showMessageDialog(null, "Pedido registrado con el número: "+ idGenerada);
             }
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla "+ ex);
         }
     }
 
     public void modificarPedido(Pedido pedido) {
 
-        String sql = "UPDATE pedido SET id_mesa= ? ,NroMesa= ? ,importe= ? ,fechaYhora= ? ,estado= ? WHERE id_Pedido= ?";
+        String sql = "UPDATE pedido SET NroMesa= ? ,importe= ? ,fechaYhora= ? ,estado= ? WHERE id_Pedido= ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, pedido.getIdMesa());
-            ps.setInt(2, pedido.getNroMesa());
-            ps.setDouble(3, pedido.getImporte());
-            ps.setTimestamp(4, (Timestamp) pedido.getFechaHora());
-            ps.setBoolean(5, pedido.isEstado());
+           
+            ps.setInt(1, pedido.getNroMesa());
+            ps.setDouble(2, pedido.getImporte());
+            ps.setTimestamp(3, pedido.getFechaHora());
+            ps.setBoolean(4, pedido.isEstado());
             
 
             int exito = ps.executeUpdate();
@@ -72,7 +72,7 @@ public class PedidoData {
                 JOptionPane.showMessageDialog(null, " Se modifico el Pedido ");
 
             }
-
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido ");
 
@@ -119,19 +119,18 @@ public class PedidoData {
                 pedido.setImporte(rs.getDouble("importe"));
                 pedido.setFechaHora(rs.getTimestamp("fechaYhora"));
                 pedido.setEstado(rs.getBoolean("estado"));
-                
+
                 pedidos.add(pedido);
             }
 
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla meseros " + ex.getMessage());
+            ex.printStackTrace();
         }
 
         return pedidos;
     }
 
-  
-    } 
+}
     
