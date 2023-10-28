@@ -71,6 +71,11 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         jButtonEliminar.setText("Eliminar");
 
         jButtonModificar.setText("Modificar");
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarActionPerformed(evt);
+            }
+        });
 
         jTextNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,23 +184,27 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextNombreActionPerformed
 
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
-        // Obtener los valores de los campos de texto
-    String nombre = jTextNombre.getText();
-    int stock = Integer.parseInt(jTextStock.getText());
-    double precio = Double.parseDouble(jTextPrecio.getText());
+        //Obtiene valores de los textField
+        String nombre = jTextNombre.getText();
+        int stock = Integer.parseInt(jTextStock.getText());
+        double precio = Double.parseDouble(jTextPrecio.getText());
 
-    // Crear un objeto Producto con los valores
-    Producto producto = new Producto(nombre, stock, precio, true);
+        // Crea un objeto Producto con los valores
+        Producto productoNuevo = new Producto(nombre, stock, precio, true);
 
-    // Acceder a ProductoData y llamar al método agregarProducto
-    ProductoData productoData = new ProductoData(); // Supongo que tienes una instancia de ProductoData
-    productoData.agregarProducto(producto);
+        // Accede a ProductoData y llama al método agregarProducto
+        ProductoData productoData = new ProductoData();
+        productoData.agregarProducto(productoNuevo);
 
-    // Limpiar los campos de texto después de agregar el producto
-    jTextNombre.setText("");
-    jTextStock.setText("");
-    jTextPrecio.setText("");
+        // Limpia los texFields
+        jTextNombre.setText("");
+        jTextStock.setText("");
+        jTextPrecio.setText("");
     }//GEN-LAST:event_jButtonAgregarActionPerformed
+
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+        
+    }//GEN-LAST:event_jButtonModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

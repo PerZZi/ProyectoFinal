@@ -18,16 +18,17 @@ import proyectofinal.Tablas.Producto;
 
 
 public class Estadisticas extends javax.swing.JInternalFrame {
-private DefaultTableModel tabla2 =new DefaultTableModel();
-    private List<Mesero>listaMeseros= new ArrayList<>();
-    
-    
-    private MeseroData mozo;
-    
+
+    private DefaultTableModel tabla2 = new DefaultTableModel();
+    private List<Mesero> listaMeseros = new ArrayList<>();
+
+    private MeseroData mozo = new MeseroData();
+   
+
     public Estadisticas() {
         initComponents();
-        this.setSize(795,600);
-       
+        this.setSize(795, 600);
+
         armarTabla2();
     }
 
@@ -51,7 +52,7 @@ private DefaultTableModel tabla2 =new DefaultTableModel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTtabla2 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        jTextNombreMesero = new javax.swing.JTextField();
 
         setClosable(true);
         setPreferredSize(new java.awt.Dimension(744, 567));
@@ -72,26 +73,21 @@ private DefaultTableModel tabla2 =new DefaultTableModel();
                 {null, null, null, null, null}
             },
             new String [] {
-                "Mesero", "Title 2", "Title 3", "Title 4", "Title 5"
+                "Mesero", "Cant.Mesas", "Cant.Pedidos", "Fecha", "Totales"
             }
         ));
         jScrollPane1.setViewportView(jTtabla2);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextNombreMesero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
+                jTextNombreMeseroKeyReleased(evt);
             }
         });
 
         jDesktopPane2.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jTextNombreMesero, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
@@ -103,7 +99,7 @@ private DefaultTableModel tabla2 =new DefaultTableModel();
                         .addGap(67, 67, 67)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextNombreMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +115,7 @@ private DefaultTableModel tabla2 =new DefaultTableModel();
                 .addGap(77, 77, 77)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextNombreMesero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(71, 71, 71)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(114, Short.MAX_VALUE))
@@ -142,15 +138,25 @@ private DefaultTableModel tabla2 =new DefaultTableModel();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-      
+    private void jTextNombreMeseroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNombreMeseroKeyReleased
+            
+        String nombreMesero = jTextNombreMesero.getText();
+            
+        List <Mesero> meserosActivos = mozo.listarMesero();
+        //Limpia la tabla
+        tabla2.setRowCount(0);
         
+        for (Mesero mesero : meserosActivos) {
+        if (mesero.getNombre().toLowerCase().contains(nombreMesero.toLowerCase())) {
+            // Agrega el mesero a la tabla
+            tabla2.addRow(new Object[]{
+                mesero.getNombre(),
+                
+            });
+        }
+    }
         
-    }//GEN-LAST:event_jTextField1KeyReleased
+    }//GEN-LAST:event_jTextNombreMeseroKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -158,7 +164,7 @@ private DefaultTableModel tabla2 =new DefaultTableModel();
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextNombreMesero;
     private javax.swing.JTable jTtabla2;
     // End of variables declaration//GEN-END:variables
 
