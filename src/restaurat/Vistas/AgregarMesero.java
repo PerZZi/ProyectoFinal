@@ -251,23 +251,21 @@ private Mesero mesero=null;
     }//GEN-LAST:event_jBmodificarActionPerformed
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
-       
-        try{
-            Integer id= Integer.parseInt(jTidmesero.getText());
+
+        try {
+            Integer id = Integer.parseInt(jTidmesero.getText());
             mesero = meseData.buscarMesero(id);
-            if(mesero !=null){
+            if (mesero != null) {
                 jTmesero.setText(mesero.getNombre());
-            
-                
+
             }
-        
-        }catch(NumberFormatException ex){
-        JOptionPane.showMessageDialog(null, " Por favor, Ingrese Un ID valido");
-        
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, " Por favor, Ingrese Un ID valido");
+
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     

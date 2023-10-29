@@ -151,31 +151,31 @@ public class MeseroData {
     }
     
     
-    public Mesero buscarMesero(int id) { 
-    String sql = "SELECT nombre FROM mesero WHERE idMesero=?";
-    Mesero mesero = null;
-    
-    try {
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1, id);
-        ResultSet rs = ps.executeQuery();
-        
-        if (rs.next()) {
-            mesero = new Mesero();
-            mesero.setId_mesero(id);
-            mesero.setNombre(rs.getString("nombre"));
-            
-        } else {
-            JOptionPane.showMessageDialog(null, "No Existe Ese Mesero");
+    public Mesero buscarMesero(int id) {
+        String sql = "SELECT nombre FROM mesero WHERE id_mesero=?";
+        Mesero mesero = null;
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                mesero = new Mesero();
+                mesero.setId_mesero(id);
+                mesero.setNombre(rs.getString("nombre"));
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No Existe Ese Mesero");
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla: " + ex.getMessage());
         }
-        
-        ps.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla: " + ex.getMessage());
+
+        return mesero;
     }
-    
-    return mesero;
-}
     
     
     
