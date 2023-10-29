@@ -13,8 +13,16 @@ public class Mesero {
     private boolean estado;
 
     public Mesero() {
+        
     }
 
+    public Mesero(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
+    
+    
     public Mesero(String nombre,  boolean estado) {
         this.nombre = nombre;
         

@@ -71,6 +71,11 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         });
 
         jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
 
         jButtonModificar.setText("Modificar");
         jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +87,12 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         jTextNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextNombreActionPerformed(evt);
+            }
+        });
+
+        jTextStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextStockActionPerformed(evt);
             }
         });
 
@@ -224,6 +235,14 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
     private void jTextBuscaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextBuscaProductoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextBuscaProductoActionPerformed
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jTextStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextStockActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextStockActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

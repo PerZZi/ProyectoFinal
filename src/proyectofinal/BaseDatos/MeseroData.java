@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyectofinal.Tablas.Mesero;
 
@@ -73,30 +75,26 @@ public class MeseroData {
 }
     
 
+   
     public void eliminarMesero(int id) {
+    String sql = "UPDATE mesero SET estado = 0 WHERE id_mesero = ?";
 
-        String sql = "UPDATE mesero SET estado =0  where id_mesero =?";
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, id);
 
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            ps.executeUpdate();
+        int filasAfectadas = ps.executeUpdate();
+        ps.close();
 
-            int elimino = ps.executeUpdate();
-
-            if (elimino == 1) {
-
-                JOptionPane.showMessageDialog(null, " Mesero eliminado ");
-
-            }
-
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al intentar acceder a la tabla Mesero ");
-
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Mesero eliminado correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró ningún mesero con el ID proporcionado.");
         }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al intentar acceder a la tabla Mesero: " + ex.getMessage());
     }
-    
+}
     public List<Mesero> listarMesero() {
 
         String sql = "SELECT id_mesero, nombre, estado FROM mesero WHERE estado= 1";
@@ -126,6 +124,127 @@ public class MeseroData {
     }
 
 
+    public void guardarMesero(Mesero mesero){
+    
+            String sql= "INSERT INTO mesero (nombre)VALUES (?)";
+           
+                try {
+                    PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                    ps.setString(1, mesero.getNombre());
+                    ResultSet rs = ps.getGeneratedKeys();
+                    
+                    if(rs.next()){
+                        
+                        mesero.setNombre(rs.getString(1));
+                        JOptionPane.showMessageDialog(null,"Mesero Añadido con Exito");
+                    }
+                    ps.close();
+                
+                } catch (SQLException ex) {
+                    
+                    JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Mesero"+ ex.getMessage() );
+                    
+                }
+            
+            
+    
+    }
+    
+    
+    public Mesero buscarMesero(int id) { 
+    String sql = "SELECT nombre FROM mesero WHERE idMesero=?";
+    Mesero mesero = null;
+    
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        
+        if (rs.next()) {
+            mesero = new Mesero();
+            mesero.setId_mesero(id);
+            mesero.setNombre(rs.getString("nombre"));
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "No Existe Ese Mesero");
+        }
+        
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla: " + ex.getMessage());
+    }
+    
+    return mesero;
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // NO SE SI ESTA BIEN, ES PARA ELIMINAR EL NOMBRE DE LOS MESEROS
+//    private void eliminarMesero2(Mesero mesero){
+//      try {
+//        String sql = "UPDATE mesero SET nombre = ? WHERE id = ?"; // Reemplaza 'id' con el nombre de la columna que identifica de manera única al mesero.
+//        PreparedStatement ps = con.prepareStatement(sql);
+//        ps.setString(1, mesero.getNombre());
+//        ps.setInt(2, mesero.getId_mesero()); // Suponiendo que tengas un método getId() para obtener el ID del mesero.
+//        int filasAfectadas = ps.executeUpdate();
+//
+//        if (filasAfectadas > 0) {
+//            // La actualización fue exitosa.
+//            JOptionPane.showMessageDialog(null, "Mesero actualizado exitosamente.");
+//        } else {
+//            // No se encontró ningún mesero con el ID proporcionado.
+//            JOptionPane.showMessageDialog(null, "No se encontró ningún mesero con el ID proporcionado.");
+//        }
+//    } catch (SQLException ex) {
+//        ex.printStackTrace();
+//        JOptionPane.showMessageDialog(null, "Error al actualizar el mesero: " + ex.getMessage());
+//    }
+//}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+// fin
 }
