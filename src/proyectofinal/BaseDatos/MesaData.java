@@ -152,6 +152,8 @@ public class MesaData {
                 mesa.setNumeroMesa(rs.getInt("NroMesa"));
                 mesa.setCapacidad(rs.getInt("capacidad"));
                 mesa.setEstado(rs.getBoolean("estado"));
+                
+                mesas.add(mesa);
                }
 
             ps.close();

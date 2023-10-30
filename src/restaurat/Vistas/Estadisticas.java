@@ -54,7 +54,6 @@ public class Estadisticas extends javax.swing.JInternalFrame {
         jTtabla2 = new javax.swing.JTable();
         jTextNombreMesero = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
 
         setClosable(true);
@@ -108,7 +107,6 @@ public class Estadisticas extends javax.swing.JInternalFrame {
         jDesktopPane2.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jTextNombreMesero, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jDateChooser1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
@@ -130,11 +128,10 @@ public class Estadisticas extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
+                                .addGap(183, 183, 183)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jTextNombreMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,13 +145,11 @@ public class Estadisticas extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel2)
                         .addGap(27, 27, 27)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton1))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,7 +200,6 @@ public class Estadisticas extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

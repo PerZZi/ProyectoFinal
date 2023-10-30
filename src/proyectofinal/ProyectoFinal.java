@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import proyectofinal.BaseDatos.Conexion;
 import proyectofinal.BaseDatos.MesaData;
@@ -63,9 +64,20 @@ public class ProyectoFinal {
             
                 
 //        Mesa mesa1=new Mesa(1,6,true);
-//        MesaData mesaData=new MesaData();
+        MesaData mesaData=new MesaData();
         //mesaData.agregarMesa(mesa1);
         //mesaData.modificarMesa(mesa1);
+        
+//        List<Mesa> mesas = mesaData.listarMesa();
+//            
+//        for (Mesa mesa : mesas) {
+//        System.out.println("ID: " + mesa.getIdMesa());
+//        System.out.println("Número de Mesa: " + mesa.getNumeroMesa());
+//        System.out.println("Capacidad: " + mesa.getCapacidad());
+//        System.out.println("Estado: " + mesa.isEstado());
+//        System.out.println("------------");
+//    }
+        
         
 //        Mesero mese=new Mesero("jose",true);
 //        MeseroData mesedata=new MeseroData();
