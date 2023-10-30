@@ -3,13 +3,19 @@ package restaurat.Vistas;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import proyectofinal.BaseDatos.ProductoData;
 import proyectofinal.Tablas.Producto;
 
 
 public class AgregarProducto extends javax.swing.JInternalFrame {
-
+    
+    private List<Producto>produc =new ArrayList<>();
+    private ProductoData produ = new ProductoData();
+    
     
     public AgregarProducto() {
         initComponents();   
@@ -107,9 +113,9 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Producto por ID");
 
-        jTextBuscaProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextBuscaProductoActionPerformed(evt);
+        jTextBuscaProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextBuscaProductoKeyTyped(evt);
             }
         });
 
@@ -239,15 +245,13 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         jTextNombre.setText("");
         jTextStock.setText("");
         jTextPrecio.setText("");
+        
+        jTextBuscaProducto.setText("");
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         
     }//GEN-LAST:event_jButtonModificarActionPerformed
-
-    private void jTextBuscaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextBuscaProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextBuscaProductoActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         
@@ -260,6 +264,45 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextBuscaProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextBuscaProductoKeyTyped
+         // Obtén el ID ingresado por el usuario en jTextBuscaProducto
+    String idText = jTextBuscaProducto.getText();
+
+    // Verifica si el campo no está vacío
+    if (!idText.isEmpty()) {
+        try {
+            // Convierte el texto en un valor entero (ID del producto)
+            int id = Integer.parseInt(idText);
+
+            // Llama al método ListarProductos para obtener la lista de productos
+            List<Producto> productos = produ.ListarProductos(); // Asegúrate de tener una instancia de ProductoData
+
+            // Busca el producto con el ID especificado
+            Producto producto = null;
+            for (Producto p : productos) {
+                if (p.getIdCodigo() == id) {
+                    producto = p;
+                    break;
+                }
+            }
+
+            // Verifica si se encontró un producto
+            if (producto != null) {
+                // Llena los campos con los valores del producto
+                jTextNombre.setText(producto.getNombre());
+                jTextStock.setText(Integer.toString(producto.getStock()));
+                jTextPrecio.setText(Double.toString(producto.getPrecio()));
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró un producto con ese ID.");
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese un ID válido.");
+        }
+    } else {
+        // Si el campo está vacío, puedes realizar alguna acción o mostrar un mensaje.
+    }
+    }//GEN-LAST:event_jTextBuscaProductoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
