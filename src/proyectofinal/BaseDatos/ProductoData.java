@@ -199,4 +199,40 @@ public class ProductoData {
         }
          return productos;
      }
+
+public void actualizarProducto(Producto producto) {
+    String sql = "UPDATE producto SET nombre=?, stock=?, precio=?, estado=? WHERE id_Codigo=?";
+    
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, producto.getNombre());
+        ps.setInt(2, producto.getStock());
+        ps.setDouble(3, producto.getPrecio());
+        ps.setBoolean(4, producto.getEstado());
+        ps.setInt(5, producto.getIdCodigo());
+
+        int exito = ps.executeUpdate();
+        if (exito == 1) {
+            JOptionPane.showMessageDialog(null, "Producto Modificado exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró el producto con el ID proporcionado");
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al tratar de acceder a la tabla producto: " + ex.getMessage());
+    }
+
+
+
 }
+
+
+}
+
+
+
+
+
+
+
+
+
