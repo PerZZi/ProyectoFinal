@@ -179,7 +179,25 @@ public class MeseroData {
     
     
     
-    
+     public void actualizarMesero(Mesero mesero) {
+    String sql = "UPDATE mesero SET nombre = ? WHERE id_mesero = ?";
+
+    try (PreparedStatement ps = con.prepareStatement(sql)) {
+        ps.setString(1, mesero.getNombre());
+        ps.setInt(2, mesero.getId_mesero());
+
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Mesero actualizado con éxito.");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró el mesero con el ID proporcionado.");
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al actualizar el mesero: " + ex.getMessage());
+    }
+}
+
     
     
     
