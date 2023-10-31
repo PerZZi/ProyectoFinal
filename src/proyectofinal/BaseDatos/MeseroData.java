@@ -124,31 +124,9 @@ public class MeseroData {
     }
 
 
-    public void guardarMesero(Mesero mesero){
+
     
-            String sql= "INSERT INTO mesero (nombre)VALUES (?)";
-           
-                try {
-                    PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                    ps.setString(1, mesero.getNombre());
-                    ResultSet rs = ps.getGeneratedKeys();
-                    
-                    if(rs.next()){
-                        
-                        mesero.setNombre(rs.getString(1));
-                        JOptionPane.showMessageDialog(null,"Mesero Añadido con Exito");
-                    }
-                    ps.close();
-                
-                } catch (SQLException ex) {
-                    
-                    JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Mesero"+ ex.getMessage() );
-                    
-                }
-            
-            
-    
-    }
+   
     
     
     public Mesero buscarMesero(int id) {
@@ -205,46 +183,29 @@ public class MeseroData {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // NO SE SI ESTA BIEN, ES PARA ELIMINAR EL NOMBRE DE LOS MESEROS
-//    private void eliminarMesero2(Mesero mesero){
-//      try {
-//        String sql = "UPDATE mesero SET nombre = ? WHERE id = ?"; // Reemplaza 'id' con el nombre de la columna que identifica de manera única al mesero.
-//        PreparedStatement ps = con.prepareStatement(sql);
-//        ps.setString(1, mesero.getNombre());
-//        ps.setInt(2, mesero.getId_mesero()); // Suponiendo que tengas un método getId() para obtener el ID del mesero.
-//        int filasAfectadas = ps.executeUpdate();
-//
-//        if (filasAfectadas > 0) {
-//            // La actualización fue exitosa.
-//            JOptionPane.showMessageDialog(null, "Mesero actualizado exitosamente.");
-//        } else {
-//            // No se encontró ningún mesero con el ID proporcionado.
-//            JOptionPane.showMessageDialog(null, "No se encontró ningún mesero con el ID proporcionado.");
-//        }
-//    } catch (SQLException ex) {
-//        ex.printStackTrace();
-//        JOptionPane.showMessageDialog(null, "Error al actualizar el mesero: " + ex.getMessage());
-//    }
-//}
-    
-    
-    
-    
-    
-    
-    
-    
+     public void guardarMesero(Mesero mesero) {
+        String sql = "INSERT INTO mesero (nombre, estado) VALUES (?, ?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, mesero.getNombre());
+            ps.setInt(2, 1); // 1 representa "activo" en tu caso, ajusta este valor según tu esquema de estados.
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                ResultSet generatedKeys = ps.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    int idGenerado = generatedKeys.getInt(1);
+                    mesero.setId(idGenerado);
+                    JOptionPane.showMessageDialog(null, "Mesero añadido con éxito. ID: " + idGenerado);
+                }
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Mesero: " + ex.getMessage());
+        }
+    }
     
     
 
@@ -253,15 +214,7 @@ public class MeseroData {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+     
     
     
 // fin

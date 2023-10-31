@@ -7,6 +7,9 @@ public class Mesero {
     private String nombre;
     private int id_pedido;
     private boolean estado;
+    private int id;
+
+  
 
     public Mesero() {
         
@@ -14,6 +17,10 @@ public class Mesero {
 
     public Mesero(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Mesero(int id) {
+        this.id = id;
     }
     
     
@@ -31,7 +38,13 @@ public class Mesero {
         
         this.estado = estado;
     }
-    
+      public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
 
     public int getId_mesero() {
