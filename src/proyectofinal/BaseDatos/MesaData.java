@@ -163,7 +163,7 @@ public class MesaData {
     
     
     public Mesa buscarMesa(int numeroMesa) {
-    String sql = "SELECT id_Mesa, NroMesa, capacidad, estado FROM mesa WHERE NroMesa = ? AND estado = 1";
+    String sql = "SELECT id_Mesa, NroMesa, capacidad, estado FROM mesa WHERE NroMesa = ? ";
     
     try {
         PreparedStatement ps = con.prepareStatement(sql);
@@ -239,7 +239,31 @@ public class MesaData {
 }
     
     
-    
+    public void activarMesa(int numeroMesa) {
+    // Verifica si la mesa con el número dado existe
+    if (!existeMesaConNumero(numeroMesa)) {
+        JOptionPane.showMessageDialog(null, "La mesa no existe. No se puede activar.");
+        return;
+    }
+
+    String sql = "UPDATE mesa SET estado = 1 WHERE NroMesa = ?";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, numeroMesa);
+
+        int rowsUpdated = ps.executeUpdate();
+        ps.close();
+
+        if (rowsUpdated > 0) {
+            JOptionPane.showMessageDialog(null, "Mesa activada con éxito.");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha encontrado la mesa para activar.");
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al intentar activar la mesa: " + ex.getMessage());
+    }
+}
     
     
     

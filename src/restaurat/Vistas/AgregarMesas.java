@@ -50,6 +50,7 @@ private Mesa mesas=null;
         jLabel4 = new javax.swing.JLabel();
         jTnuevonmesa = new javax.swing.JTextField();
         jBbuscar = new javax.swing.JButton();
+        jBactivar = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -105,6 +106,13 @@ private Mesa mesas=null;
             }
         });
 
+        jBactivar.setText("Activar");
+        jBactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBactivarActionPerformed(evt);
+            }
+        });
+
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -117,12 +125,13 @@ private Mesa mesas=null;
         jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jTnuevonmesa, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBbuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jBactivar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
@@ -154,8 +163,10 @@ private Mesa mesas=null;
                                 .addGap(18, 18, 18)
                                 .addComponent(jTnmesa, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26)
-                                .addComponent(jBbuscar)))))
-                .addContainerGap(71, Short.MAX_VALUE))
+                                .addComponent(jBbuscar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBactivar)))))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +177,8 @@ private Mesa mesas=null;
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTnmesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBbuscar))
+                    .addComponent(jBbuscar)
+                    .addComponent(jBactivar))
                 .addGap(37, 37, 37)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -270,17 +282,16 @@ private Mesa mesas=null;
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
+try {
         
- try {
-        // Obtén el número de mesa a buscar desde el campo de texto
         int numeroMesa = Integer.parseInt(jTnmesa.getText());
 
-        // Realiza la búsqueda en la base de datos
+    
         Mesa mesa = mesaData.buscarMesa(numeroMesa);
 
         if (mesa != null) {
             if (mesa.isEstado()) {
-                // Si se encontró una mesa en estado activo, muestra su capacidad en el campo de texto
+                
                 jTcapacidad.setText(Integer.toString(mesa.getCapacidad()));
             } else {
                 // Si la mesa no está en estado activo, muestra un mensaje
@@ -292,15 +303,43 @@ private Mesa mesas=null;
             JOptionPane.showMessageDialog(this, "No se encontró una mesa con ese número.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     } catch (NumberFormatException ex) {
-        // Maneja posibles errores de conversión de número
+       
         JOptionPane.showMessageDialog(this, "Ingresa un número de mesa válido.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
- 
+    }        
+        
         
     }//GEN-LAST:event_jBbuscarActionPerformed
 
+    private void jBactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactivarActionPerformed
+      try {
+        // Obtén el número de mesa a buscar desde el campo de texto
+        int numeroMesa = Integer.parseInt(jTnmesa.getText());
+
+        // Realiza la búsqueda en la base de datos
+        Mesa mesa = mesaData.buscarMesa(numeroMesa);
+
+        if (mesa != null) {
+            if (!mesa.isEstado()) {
+                // Si la mesa está inactiva, activa la mesa llamando al método "activarMesa"
+                mesaData.activarMesa(numeroMesa);
+                JOptionPane.showMessageDialog(this, "Mesa activada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                // Si la mesa ya está activa, muestra un mensaje
+                JOptionPane.showMessageDialog(this, "La mesa ya está activa.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            // Si no se encontró la mesa, muestra un mensaje
+            JOptionPane.showMessageDialog(this, "No se encontró una mesa con ese número.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (NumberFormatException ex) {
+        // Maneja posibles errores de conversión de número
+        JOptionPane.showMessageDialog(this, "Ingresa un número de mesa válido.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_jBactivarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBactivar;
     private javax.swing.JButton jBbuscar;
     private javax.swing.JButton jBeliminar;
     private javax.swing.JButton jBguardar;
