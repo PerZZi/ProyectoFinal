@@ -257,36 +257,66 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextNombreActionPerformed
 
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
-        //Obtiene valores de los textField
-        String nombre = jTextNombre.getText();
-        int stock = Integer.parseInt(jTextStock.getText());
-        double precio = Double.parseDouble(jTextPrecio.getText());
+      // Obtiene valores de los textField
+    String nombre = jTextNombre.getText();
+    String stockText = jTextStock.getText();
+    String precioText = jTextPrecio.getText();
 
-        // Crea un objeto Producto con los valores
-        Producto productoNuevo = new Producto(nombre, stock, precio, true);
-
-        // Accede a ProductoData y llama al método agregarProducto
-        ProductoData productoData = new ProductoData();
-        productoData.agregarProducto(productoNuevo);
-
-        // Limpia los texFields
-        jTextNombre.setText("");
+    // Validación del nombre: asegúrate de que solo contenga letras
+    if (!nombre.matches("^[a-zA-Z\\s]+$")) {
+        JOptionPane.showMessageDialog(null, "El nombre solo debe contener letras y espacios.");
+         jTextNombre.setText("");
         jTextStock.setText("");
         jTextPrecio.setText("");
-        
+        jTnuevoProd.setText("");
         jTextBuscaProducto.setText("");
+        
+        return;     
+    }
+       
+    // Validación del stock y precio: asegúrate de que sean números
+    int stock;
+    double precio;
+    try {
+        stock = Integer.parseInt(stockText);
+        precio = Double.parseDouble(precioText);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "El stock y el precio deben ser solo números, No letras.");
+         jTextStock.setText("");
+        jTextPrecio.setText("");
+        return;
+        
+  
+    }
+         
+    // Si todas las validaciones pasan, puedes continuar con el proceso de agregar el producto
+    Producto productoNuevo = new Producto(nombre, stock, precio, true);
+
+    ProductoData productoData = new ProductoData();
+    productoData.agregarProducto(productoNuevo);
+
+    // Limpia los texFields
+    jTextNombre.setText("");
+    jTextStock.setText("");
+    jTextPrecio.setText("");
+    jTextBuscaProducto.setText("");
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     private void jBmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodificarActionPerformed
-        
         try {
         // Obtén el ID del producto y el nuevo nombre del campo de texto
         int id = Integer.parseInt(jTextBuscaProducto.getText());
         String nuevoNombre = jTnuevoProd.getText();
 
-        // Asegúrate de que el nuevo nombre no esté vacío
+        // Asegúrate de que el nuevo nombre no esté vacío y contenga solo letras
         if (nuevoNombre.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El nuevo nombre no puede estar vacío.");
+            jTnuevoProd.requestFocus();
+        } else if (!nuevoNombre.matches("^[a-zA-Z\\s]+$")) {
+            JOptionPane.showMessageDialog(null, "El nuevo nombre solo debe contener letras y espacios.");
+            
+              jTnuevoProd.setText("");
+              
         } else {
             // Crea un objeto Producto con el ID y el nuevo nombre
             Producto producto = produ.buscarProducto(id);
@@ -301,12 +331,19 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                 jTextNombre.setText("");
                 jTextStock.setText("");
                 jTextPrecio.setText("");
+                jTnuevoProd.setText("");
+                jTextBuscaProducto.setText("");
+                jTextBuscaProducto.requestFocus();
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró el producto con el ID proporcionado");
+    
+                 jTextBuscaProducto.setText("");
             }
         }
     } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(null, "Ingrese un ID válido");
+      
+    jTextBuscaProducto.setText("");
     }
         
           
@@ -331,6 +368,8 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(null, "Producto eliminado con éxito");
     } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(null, "Ingrese un ID válido");
+     
+    jTextBuscaProducto.setText("");
     }
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
@@ -372,9 +411,15 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                 jTextPrecio.setText(Double.toString(producto.getPrecio()));
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró un producto con ese ID.");
+      
+                jTextBuscaProducto.setText("");
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Por favor, ingrese un ID válido.");
+    jTextNombre.setText("");
+    jTextStock.setText("");
+    jTextPrecio.setText("");
+    jTextBuscaProducto.setText("");
         }
     } else {
         // Si el campo está vacío, puedes realizar alguna acción o mostrar un mensaje.
@@ -388,7 +433,11 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
   private void  limpiarCampos(){
   
       jTnuevoProd.setText("");
-  
+   jTextNombre.setText("");
+    jTextStock.setText("");
+    jTextPrecio.setText("");
+
+    jTextBuscaProducto.setText("");
   
   }
     

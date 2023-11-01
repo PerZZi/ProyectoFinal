@@ -49,6 +49,7 @@ private Mesero mesero=null;
         jBbuscar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jTnuevoNombre = new javax.swing.JTextField();
+        jBlimpiar = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -107,7 +108,14 @@ private Mesero mesero=null;
 
         jLabel4.setFont(new java.awt.Font("Lucida Handwriting", 3, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Nuevo Nombre");
+        jLabel4.setText("Modificar Nombre");
+
+        jBlimpiar.setText("Limpiar Campos");
+        jBlimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBlimpiarActionPerformed(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -121,38 +129,36 @@ private Mesero mesero=null;
         jDesktopPane1.setLayer(jBbuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jTnuevoNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jBlimpiar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(109, Short.MAX_VALUE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jBmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTmesero, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                            .addComponent(jTidmesero)))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTnuevoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jBbuscar))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jBguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jBmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(48, 48, 48))
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTnuevoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTmesero, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                                .addComponent(jTidmesero)))
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jBguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jBbuscar)))
+                        .addGap(16, 16, 16)))
+                .addGap(64, 64, 64))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -161,7 +167,9 @@ private Mesero mesero=null;
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(144, 144, 144)
                         .addComponent(jBeliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(165, 165, 165)
+                        .addGap(37, 37, 37)
+                        .addComponent(jBlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
                         .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -170,25 +178,26 @@ private Mesero mesero=null;
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addGap(34, 34, 34)
+                .addGap(58, 58, 58)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTidmesero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBbuscar))
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTmesero, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBguardar))
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTnuevoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBmodificar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBeliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(68, 68, 68))
         );
 
@@ -212,24 +221,37 @@ private Mesero mesero=null;
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
         
-     try {
+   try {
         String nombre = jTmesero.getText(); // Obtén el nombre del campo de texto
 
         if (!nombre.isEmpty()) {
-            Mesero nuevoMesero = new Mesero(); // Crea una nueva instancia de Mesero
-            nuevoMesero.setNombre(nombre); // Establece el nombre del mesero
+            // Validación: asegúrate de que el nombre solo contenga letras y espacios
+            if (nombre.matches("^[a-zA-Z\\s]+$")) {
+                Mesero nuevoMesero = new Mesero(); // Crea una nueva instancia de Mesero
+                nuevoMesero.setNombre(nombre); // Establece el nombre del mesero
 
-            meseData.agregarMesero(nuevoMesero); // Llama al método agregarMesero de tu MeseroData
+                meseData.agregarMesero(nuevoMesero); // Llama al método agregarMesero de tu MeseroData
 
-            JOptionPane.showMessageDialog(null, "Mesero guardado con éxito.");
-            limpiarCampos();
+                JOptionPane.showMessageDialog(null, "Mesero guardado con éxito.");
+                 jTmesero.setText("");
+                jTidmesero.setText("");
+                 jTnuevoNombre.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null, "El nombre del mesero solo puede contener letras y espacios.");
+                 jTmesero.setText("");
+                    jTidmesero.setText("");
+                     
+            }
         } else {
             JOptionPane.showMessageDialog(null, "El nombre del mesero no puede estar vacío.");
+             jTmesero.requestFocus();
+   
         }
     } catch (Exception ex) {
         JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el mesero: " + ex.getMessage());
-    }  
-        
+    }
+   jTmesero.setText("");
+   
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
@@ -238,23 +260,34 @@ private Mesero mesero=null;
         Integer id = Integer.parseInt(jTidmesero.getText());
 
         int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas eliminar a este mesero?", "Confirmación de eliminación", JOptionPane.YES_NO_OPTION);
-
+         jTmesero.setText("");
+          jTidmesero.setText("");
+        jTnuevoNombre.setText("");
         if (confirmacion == JOptionPane.YES_OPTION) {
             Mesero mesero = meseData.buscarMesero(id);
 
             if (mesero != null) {
                 meseData.eliminarMesero(id); // Supongamos que tienes un método para eliminar un mesero en tu clase meseData.
                 JOptionPane.showMessageDialog(null, "Mesero eliminado con éxito.");
+                 jTmesero.setText("");
+                    jTidmesero.setText("");
+                    jTnuevoNombre.setText("");
                
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró el mesero con el ID proporcionado.");
+                
+             
+   
             }
         }
     } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(null, "Ingrese un ID válido.");
+        
+    jTidmesero.setText("");
+    
     }
 
-        limpiarCampos(); 
+     
         
     }//GEN-LAST:event_jBeliminarActionPerformed
 
@@ -273,24 +306,40 @@ private Mesero mesero=null;
 
         if (nuevoNombre.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El nuevo nombre no puede estar vacío.");
+                jTnuevoNombre.requestFocus();
+                 
+                
         } else {
-            Mesero mesero = meseData.buscarMesero(id);
+            // Validación: asegúrate de que el nuevo nombre solo contenga letras y espacios
+            if (nuevoNombre.matches("^[a-zA-Z\\s]+$")) {
+                Mesero mesero = meseData.buscarMesero(id);
 
-            if (mesero != null) {
-                mesero.setNombre(nuevoNombre);
-                meseData.actualizarMesero(mesero); // Supongamos que tienes un método para actualizar un mesero en tu clase meseData.
-                JOptionPane.showMessageDialog(null, "Mesero modificado con éxito.");
+                if (mesero != null) {
+                    mesero.setNombre(nuevoNombre);
+                    meseData.actualizarMesero(mesero); // Supongamos que tienes un método para actualizar un mesero en tu clase meseData.
+                    JOptionPane.showMessageDialog(null, "Mesero modificado con éxito.");
+                     jTmesero.setText("");
+                    jTidmesero.setText("");
+                    jTnuevoNombre.setText("");
+                   
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró el mesero con el ID proporcionado.");
+                    
+                    
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "No se encontró el mesero con el ID proporcionado.");
+                JOptionPane.showMessageDialog(null, "El nuevo nombre solo puede contener letras y espacios.");               
+                jTnuevoNombre.setText("");
+                jTnuevoNombre.requestFocus();
             }
         }
     } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(null, "Ingrese un ID válido.");
+         jTmesero.setText("");
+            jTidmesero.setText("");
+            jTnuevoNombre.setText("");
     }
-  
-       
-        
-        
         
     }//GEN-LAST:event_jBmodificarActionPerformed
 
@@ -306,26 +355,30 @@ private Mesero mesero=null;
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, " Por favor, Ingrese Un ID valido");
-
+            
+             jTidmesero.setText("");
+   
+           
         }
 
 
     }//GEN-LAST:event_jBbuscarActionPerformed
 
-    
-    
-    private void limpiarCampos(){
-    jTmesero.setText("");
+    private void jBlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarActionPerformed
+        jTmesero.setText("");
     jTidmesero.setText("");
     jTnuevoNombre.setText("");
+    }//GEN-LAST:event_jBlimpiarActionPerformed
+
     
     
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBbuscar;
     private javax.swing.JButton jBeliminar;
     private javax.swing.JButton jBguardar;
+    private javax.swing.JButton jBlimpiar;
     private javax.swing.JButton jBmodificar;
     private javax.swing.JButton jBsalir;
     private javax.swing.JDesktopPane jDesktopPane1;

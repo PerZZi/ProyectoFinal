@@ -90,31 +90,38 @@ public class MesaData {
         return false;
     }
 }
-    public void modificarMesa(Mesa mesa) {
-// Verifica si el número de mesa ya existe
-        if (!existeMesaConNumero(mesa.getNumeroMesa())) {
-            JOptionPane.showMessageDialog(null, "El número de mesa no existe. No se puede modificar.");
-            return;
-        }
 
-        String sql = "UPDATE mesa SET capacidad= ?,estado= ? WHERE id_Mesa= ?";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, mesa.getCapacidad());
-            ps.setBoolean(2, mesa.isEstado());
-            ps.setInt(3, mesa.getNumeroMesa());
-            int rowsUpdated = ps.executeUpdate();
-            if (rowsUpdated > 0) {
-                JOptionPane.showMessageDialog(null, "Mesa modificada con éxito.");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se ha encontrado la mesa para modificar.");
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al intentar modificar la mesa: " + ex.getMessage());
-        }
+ 
+ public void modificarNumeroMesa(int numeroMesa, int nuevoNumeroMesa) {
+    // Verifica si el número de mesa que deseas modificar existe
+    if (!existeMesaConNumero(numeroMesa)) {
+        JOptionPane.showMessageDialog(null, "El número de mesa no existe. No se puede modificar.");
+        return;
     }
-    private boolean existeMesaConNumero(int numeroMesa) {
+
+    String sql = "UPDATE mesa SET NroMesa = ? WHERE NroMesa = ?";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, nuevoNumeroMesa);
+        ps.setInt(2, numeroMesa);
+
+        int rowsUpdated = ps.executeUpdate();
+        ps.close();
+
+        if (rowsUpdated > 0) {
+            JOptionPane.showMessageDialog(null, "Número de mesa modificado con éxito.");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha encontrado la mesa para modificar.");
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al intentar modificar el número de mesa: " + ex.getMessage());
+    }
+}
+ 
+ 
+ 
+    public boolean existeMesaConNumero(int numeroMesa) {
     String sql = "SELECT COUNT(*) FROM mesa WHERE NroMesa = ?";
     try {
         PreparedStatement ps = con.prepareStatement(sql);
@@ -186,17 +193,15 @@ public class MesaData {
 }
     
     
-    
-    public void guardarMesa(Mesa mesa) {
+public void guardarMesa(Mesa mesa) {
     if (mesa.getIdMesa() == 0) {
         // La mesa es nueva, así que la insertamos en la base de datos
-        String sql = "INSERT INTO mesa (NroMesa, capacidad, estado) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO mesa (NroMesa, capacidad) VALUES (?, ?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, mesa.getNumeroMesa());
             ps.setInt(2, mesa.getCapacidad());
-            ps.setBoolean(3, mesa.isEstado());
 
             int rowsInserted = ps.executeUpdate();
 
@@ -212,31 +217,60 @@ public class MesaData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al intentar agregar la mesa: " + ex.getMessage());
         }
-    } else {
-        // La mesa ya existe, así que la actualizamos en la base de datos
-        String sql = "UPDATE mesa SET NroMesa = ?, capacidad = ?, estado = ? WHERE id_Mesa = ?";
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, mesa.getNumeroMesa());
-            ps.setInt(2, mesa.getCapacidad());
-            ps.setBoolean(3, mesa.isEstado());
-            ps.setInt(4, mesa.getIdMesa());
-
-            int rowsUpdated = ps.executeUpdate();
-
-            if (rowsUpdated > 0) {
-                JOptionPane.showMessageDialog(null, "Mesa modificada con éxito.");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se ha encontrado la mesa para modificar.");
-            }
-
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al intentar modificar la mesa: " + ex.getMessage());
-        }
     }
-}
+}    
+    
+//    
+//    public void guardarMesa(Mesa mesa) {
+//    if (mesa.getIdMesa() == 0) {
+//        // La mesa es nueva, así que la insertamos en la base de datos
+//        String sql = "INSERT INTO mesa (NroMesa, capacidad, estado) VALUES (?, ?, ?)";
+//
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//            ps.setInt(1, mesa.getNumeroMesa());
+//            ps.setInt(2, mesa.getCapacidad());
+//            ps.setBoolean(3, mesa.isEstado());
+//
+//            int rowsInserted = ps.executeUpdate();
+//
+//            if (rowsInserted > 0) {
+//                ResultSet generatedKeys = ps.getGeneratedKeys();
+//                if (generatedKeys.next()) {
+//                    mesa.setIdMesa(generatedKeys.getInt(1));
+//                }
+//                JOptionPane.showMessageDialog(null, "Mesa agregada con éxito.");
+//            }
+//
+//            ps.close();
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al intentar agregar la mesa: " + ex.getMessage());
+//        }
+//    } else {
+//        // La mesa ya existe, así que la actualizamos en la base de datos
+//        String sql = "UPDATE mesa SET NroMesa = ?, capacidad = ?, estado = ? WHERE id_Mesa = ?";
+//
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setInt(1, mesa.getNumeroMesa());
+//            ps.setInt(2, mesa.getCapacidad());
+//            ps.setBoolean(3, mesa.isEstado());
+//            ps.setInt(4, mesa.getIdMesa());
+//
+//            int rowsUpdated = ps.executeUpdate();
+//
+//            if (rowsUpdated > 0) {
+//                JOptionPane.showMessageDialog(null, "Mesa modificada con éxito.");
+//            } else {
+//                JOptionPane.showMessageDialog(null, "No se ha encontrado la mesa para modificar.");
+//            }
+//
+//            ps.close();
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al intentar modificar la mesa: " + ex.getMessage());
+//        }
+//    }
+//}
     
     
     public void activarMesa(int numeroMesa) {

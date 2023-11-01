@@ -123,37 +123,41 @@ public class MeseroData {
         return meseros;
     }
 
+public Mesero buscarMesero(int id) {
+    String sql = "SELECT nombre, estado FROM mesero WHERE id_mesero=?";
+    Mesero mesero = null;
 
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
 
-    
-   
-    
-    
-    public Mesero buscarMesero(int id) {
-        String sql = "SELECT nombre FROM mesero WHERE id_mesero=?";
-        Mesero mesero = null;
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
+        if (rs.next()) {
+            int estado = rs.getInt("estado");
+            
+            if (estado == 1) {
                 mesero = new Mesero();
                 mesero.setId_mesero(id);
                 mesero.setNombre(rs.getString("nombre"));
-
             } else {
-                JOptionPane.showMessageDialog(null, "No Existe Ese Mesero");
+                JOptionPane.showMessageDialog(null, "El Mesero con el ID proporcionado está inactivo.");
+        
             }
-
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla: " + ex.getMessage());
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró ningún Mesero con el ID proporcionado.");
         }
 
-        return mesero;
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla: " + ex.getMessage());
     }
+
+    return mesero;
+}
+    
+   
+    
+
     
     
     

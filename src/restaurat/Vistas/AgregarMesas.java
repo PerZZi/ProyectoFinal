@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package restaurat.Vistas;
 
 import java.awt.Graphics;
@@ -43,14 +39,14 @@ private Mesa mesas=null;
         jLabel3 = new javax.swing.JLabel();
         jTnmesa = new javax.swing.JTextField();
         jTcapacidad = new javax.swing.JTextField();
-        jBguardar = new javax.swing.JButton();
         jBeliminar = new javax.swing.JButton();
         jBmodificar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTnuevonmesa = new javax.swing.JTextField();
+        jTmodificar = new javax.swing.JTextField();
         jBbuscar = new javax.swing.JButton();
         jBactivar = new javax.swing.JButton();
+        jBguardar = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -72,13 +68,6 @@ private Mesa mesas=null;
             }
         });
 
-        jBguardar.setText("Guardar");
-        jBguardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBguardarActionPerformed(evt);
-            }
-        });
-
         jBeliminar.setText("Eliminar");
         jBeliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +76,11 @@ private Mesa mesas=null;
         });
 
         jBmodificar.setText("Modificar");
+        jBmodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBmodificarActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Salir");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +91,7 @@ private Mesa mesas=null;
 
         jLabel4.setFont(new java.awt.Font("Lucida Handwriting", 3, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Nuevo N°  de  Mesa");
+        jLabel4.setText("Modificar N°  de Mesa");
 
         jBbuscar.setText("Buscar");
         jBbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,19 +107,26 @@ private Mesa mesas=null;
             }
         });
 
+        jBguardar.setText("Guardar");
+        jBguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBguardarActionPerformed(evt);
+            }
+        });
+
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jTnmesa, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jTcapacidad, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jBguardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBeliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBmodificar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jTnuevonmesa, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jTmodificar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBbuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBactivar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jBguardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -134,39 +135,39 @@ private Mesa mesas=null;
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTnmesa, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                            .addComponent(jTcapacidad))
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBbuscar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBactivar))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jBguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jBguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(97, 97, 97)
-                                .addComponent(jBeliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(118, 118, 118)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1)))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTcapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jBmodificar, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTnuevonmesa, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jBmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTnmesa, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(jBbuscar)
-                                .addGap(18, 18, 18)
-                                .addComponent(jBactivar)))))
-                .addContainerGap(39, Short.MAX_VALUE))
+                                .addGap(150, 150, 150)
+                                .addComponent(jBeliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1))))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,21 +180,21 @@ private Mesa mesas=null;
                     .addComponent(jTnmesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBbuscar)
                     .addComponent(jBactivar))
-                .addGap(37, 37, 37)
+                .addGap(39, 39, 39)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTcapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jTcapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                    .addComponent(jBguardar))
+                .addGap(29, 29, 29)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTnuevonmesa, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBmodificar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBeliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61))
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -237,6 +238,8 @@ private Mesa mesas=null;
     } catch (NumberFormatException ex) {
         // Maneja posibles errores de conversión de número
         JOptionPane.showMessageDialog(this, "Ingresa un número de mesa válido.", "Error", JOptionPane.ERROR_MESSAGE);
+         jTnmesa.setText("");
+        
     }
         
         
@@ -245,41 +248,6 @@ private Mesa mesas=null;
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-            
-           try {
-        // Obtén el nuevo número de mesa desde el campo de texto jTnuevonmesa
-        int nuevoNumeroMesa = Integer.parseInt(jTnuevonmesa.getText());
-        
-        // Obtén la capacidad deseada desde el campo de texto jTcapacidad
-        int capacidad = Integer.parseInt(jTcapacidad.getText());
-
-        // Puedes agregar validación adicional aquí si es necesario
-
-        // Crea una nueva instancia de la clase Mesa
-        Mesa mesa = new Mesa();
-        mesa.setNumeroMesa(nuevoNumeroMesa);
-        mesa.setCapacidad(capacidad);
-
-        // Llama al método agregarMesa para guardar la mesa en la base de datos
-        mesaData.agregarMesa(mesa);
-
-        // Notifica al usuario que la mesa se ha guardado
-        JOptionPane.showMessageDialog(this, "Mesa guardada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-
-        // Limpia los campos de texto después de guardar la mesa
-        jTnuevonmesa.setText("");
-        jTcapacidad.setText("");
-    } catch (NumberFormatException ex) {
-        // Maneja posibles errores de conversión de número
-        JOptionPane.showMessageDialog(this, "Ingresa un número de mesa y una capacidad válidos.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-
-        
-        
-        
-    }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
 try {
@@ -296,15 +264,23 @@ try {
             } else {
                 // Si la mesa no está en estado activo, muestra un mensaje
                 JOptionPane.showMessageDialog(this, "La mesa no está en estado activo.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                 jTnmesa.setText("");              
                 jTcapacidad.setText(""); // Limpia el campo de capacidad
             }
         } else {
             // Si no se encontró la mesa, muestra un mensaje
             JOptionPane.showMessageDialog(this, "No se encontró una mesa con ese número.", "Error", JOptionPane.ERROR_MESSAGE);
+             jTnmesa.setText("");
+             jTnmesa.requestFocus();
         }
     } catch (NumberFormatException ex) {
        
         JOptionPane.showMessageDialog(this, "Ingresa un número de mesa válido.", "Error", JOptionPane.ERROR_MESSAGE);
+         jTnmesa.setText("");
+        
+        
+        
+        
     }        
         
         
@@ -330,12 +306,83 @@ try {
         } else {
             // Si no se encontró la mesa, muestra un mensaje
             JOptionPane.showMessageDialog(this, "No se encontró una mesa con ese número.", "Error", JOptionPane.ERROR_MESSAGE);
+            jTnmesa.setText("");
         }
     } catch (NumberFormatException ex) {
         // Maneja posibles errores de conversión de número
         JOptionPane.showMessageDialog(this, "Ingresa un número de mesa válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        
+        jTnmesa.setText("");  
     }
     }//GEN-LAST:event_jBactivarActionPerformed
+
+    private void jBmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodificarActionPerformed
+ String numeroMesaText = jTnmesa.getText().trim();
+    String nuevoNumeroMesaText = jTmodificar.getText().trim();
+
+    if (numeroMesaText.isEmpty() || nuevoNumeroMesaText.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Ambos campos deben contener números de mesa válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+       jTcapacidad.setText("");
+        jTmodificar.setText("");
+        jTnmesa.setText("");
+    
+    } else {
+        try {
+            int numeroMesa = Integer.parseInt(numeroMesaText);
+            int nuevoNumeroMesa = Integer.parseInt(nuevoNumeroMesaText);
+
+            // Verificar si el nuevo número de mesa ya existe en la base de datos
+            if (mesaData.existeMesaConNumero(nuevoNumeroMesa)) {
+                JOptionPane.showMessageDialog(this, "El nuevo número de mesa ya existe en la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
+                jTnmesa.setText("");
+                jTmodificar.setText("");
+                jTnmesa.setText("");
+            
+            } else {
+                // El nuevo número de mesa no existe, se puede realizar la modificación
+                mesaData.modificarNumeroMesa(numeroMesa, nuevoNumeroMesa);
+                JOptionPane.showMessageDialog(this, "Número de mesa modificado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                jTnmesa.setText("");
+                jTcapacidad.setText("");
+                jTmodificar.setText("");
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Ingresa números de mesa válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+               jTcapacidad.setText("");
+        jTmodificar.setText("");
+        jTnmesa.setText("");
+        }
+    }
+    }//GEN-LAST:event_jBmodificarActionPerformed
+
+    private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
+       // Obtén el texto de los campos de mesa y capacidad
+    String numeroMesaText = jTnmesa.getText().trim();
+    String capacidadText = jTcapacidad.getText().trim();
+
+    // Verifica que ambos campos contengan solo dígitos
+    if (!numeroMesaText.matches("\\d+") || !capacidadText.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "Ambos campos deben contener números válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+         jTnmesa.setText("");
+        jTcapacidad.setText("");
+    } else {
+        // Los campos contienen solo números, puedes continuar con la operación
+        int numeroMesa = Integer.parseInt(numeroMesaText);
+        int capacidad = Integer.parseInt(capacidadText);
+
+        // Crea un objeto Mesa con los valores ingresados
+        Mesa mesa = new Mesa(numeroMesa, capacidad, true);
+
+        // Llama al método para guardar la mesa
+        mesaData.guardarMesa(mesa);
+
+        // Limpia los campos de texto después de guardar
+        jTnmesa.setText("");
+        jTcapacidad.setText("");
+
+        JOptionPane.showMessageDialog(this, "Mesa guardada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    }
+    }//GEN-LAST:event_jBguardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -351,7 +398,7 @@ try {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTcapacidad;
+    private javax.swing.JTextField jTmodificar;
     private javax.swing.JTextField jTnmesa;
-    private javax.swing.JTextField jTnuevonmesa;
     // End of variables declaration//GEN-END:variables
 }
