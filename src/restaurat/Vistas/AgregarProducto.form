@@ -47,50 +47,56 @@
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           <Component id="jLabel1" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                                   <Component id="jButtonAgregar" min="-2" pref="121" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Component id="jButtonEliminar" min="-2" pref="107" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                                  <Component id="jButton1" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="jBlimpiarCampos" min="-2" pref="123" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel6" min="-2" pref="183" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTnuevoProd" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel3" min="-2" pref="102" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                          <Component id="jTextPrecio" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel4" min="-2" pref="135" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jTextStock" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel2" min="-2" pref="143" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jTextNombre" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel5" min="-2" pref="193" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jTextBuscaProducto" min="-2" pref="207" max="-2" attributes="0"/>
-                                      </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel6" min="-2" pref="183" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jTnuevoProd" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Component id="jBmodificar" min="-2" pref="107" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel3" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="jTextPrecio" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel4" min="-2" pref="135" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jTextStock" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel2" min="-2" pref="143" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jTextNombre" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel5" min="-2" pref="193" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jTextBuscaProducto" min="-2" pref="207" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="167" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="jBmodificar" min="-2" pref="107" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="148" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jButton1" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -133,6 +139,7 @@
                       <Component id="jButton1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       <Component id="jButtonEliminar" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       <Component id="jButtonAgregar" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="jBlimpiarCampos" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
@@ -260,6 +267,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTnuevoProd">
+        </Component>
+        <Component class="javax.swing.JButton" name="jBlimpiarCampos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Limpiar Campos"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBlimpiarCamposActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

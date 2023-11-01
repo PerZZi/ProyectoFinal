@@ -249,8 +249,11 @@ private Mesero mesero=null;
         }
     } catch (Exception ex) {
         JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar el mesero: " + ex.getMessage());
+         jTmesero.setText("");
+    jTidmesero.setText("");
+   
     }
-   jTmesero.setText("");
+   
    
     }//GEN-LAST:event_jBguardarActionPerformed
 
@@ -275,7 +278,9 @@ private Mesero mesero=null;
                
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró el mesero con el ID proporcionado.");
-                
+                 
+             jTidmesero.setText("");
+   
              
    
             }
